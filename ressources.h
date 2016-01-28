@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Thu Jan 28 10:25:45 2016 Erwan Dupard
-// Last update Thu Jan 28 15:30:42 2016 Erwan Dupard
+// Last update Thu Jan 28 15:40:22 2016 Erwan Dupard
 */
 
 #ifndef RESSOURCES_H_
@@ -54,6 +54,10 @@ typedef struct		s_block
   char			data[1]; /* Pointer on s_block + sizeof(s_block) to have data pointer */
 }			t_block;
 
+
+/*
+ * Heap Linked list ((META-DATA) DATA ) ---> ((META-DATA) DATA ) ---> NIL
+ */
 void			*data = NULL;
 
 #endif /* ! RESSOURCES_H_ */
