@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Thu Jan 28 10:25:45 2016 Erwan Dupard
-// Last update Thu Jan 28 15:50:38 2016 Erwan Dupard
+// Last update Thu Jan 28 16:07:14 2016 Erwan Dupard
 */
 
 #ifndef RESSOURCES_H_
@@ -16,7 +16,6 @@
 /*
  * Align 32bits int
  */
-
 # define align4(x) (((((x) - 1) >> 2) << 2) + 4)
 
 /*
