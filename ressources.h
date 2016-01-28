@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Thu Jan 28 10:25:45 2016 Erwan Dupard
-// Last update Thu Jan 28 15:28:59 2016 Erwan Dupard
+// Last update Thu Jan 28 15:30:42 2016 Erwan Dupard
 */
 
 #ifndef RESSOURCES_H_
@@ -48,10 +48,10 @@ void			show_alloc_mem();
  */
 typedef struct		s_block
 {
-  size_t		size; /* size of allocated block */
-  struct s_block	*next; /* next memory block */
-  int			free; /* Is the pointed byte is ready to be allocated */
-  char			data[1]; /* pointer on s_block + sizeof(s_block) to have data pointer */
+  size_t		size;    /* Size of allocated block */
+  struct s_block	*next;   /* Next memory block */
+  int			free;    /* Is the pointed byte is ready to be allocated */
+  char			data[1]; /* Pointer on s_block + sizeof(s_block) to have data pointer */
 }			t_block;
 
 void			*data = NULL;
