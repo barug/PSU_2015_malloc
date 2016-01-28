@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Thu Jan 28 10:25:45 2016 Erwan Dupard
-** Last update Thu Jan 28 10:26:50 2016 Erwan Dupard
+** Last update Thu Jan 28 11:18:55 2016 Erwan Dupard
 */
 
 #ifndef RESSOURCES_H_
@@ -36,11 +36,13 @@ void			show_alloc_mem();
 
 /*
  * Definition of memory block (set in malloc , used for free)
+ * We can call this "Meta-data"
  */
 typedef struct		s_block
 {
   size_t		size;
   struct s_block	*next;
+  int			free;
 }			t_block;
 
 #endif /* ! RESSOURCES_H_ */
