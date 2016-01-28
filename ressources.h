@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Thu Jan 28 10:25:45 2016 Erwan Dupard
-// Last update Thu Jan 28 14:17:45 2016 Erwan Dupard
+// Last update Thu Jan 28 15:19:53 2016 Erwan Dupard
 */
 
 #ifndef RESSOURCES_H_
@@ -52,5 +52,7 @@ typedef struct		s_block
   struct s_block	*next; /* next memory block */
   int			free; /* Is the pointed byte is ready to be allocated */
 }			t_block;
+
+void			*data = NULL;
 
 #endif /* ! RESSOURCES_H_ */
