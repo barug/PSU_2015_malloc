@@ -5,7 +5,7 @@
 ## Login   <dupard_e@epitech.net>
 ## 
 ## Started on  Tue Jan 26 23:48:36 2016 Erwan Dupard
-## Last update Tue Jan 26 23:54:05 2016 Erwan Dupard
+## Last update Thu Jan 28 17:04:49 2016 Erwan Dupard
 ##
 
 CC		= gcc
@@ -14,13 +14,13 @@ RM		= rm -f
 
 NAME		= libmy_malloc.so
 
-SRCS		= malloc.c	\
+SRCS		= malloc.c		\
 
 OBJS		= $(SRCS:.c=.o)
 
 CFLAGS		+= -Wall -Werror -Wextra
 
-LDFLAGS		+= -fpic -shared
+LDFLAGS		+= -fPIC -shared
 
 all: $(OBJS)
 	$(CC) -o $(NAME) $(OBJS) $(CFLAGS) $(LDFLAGS)

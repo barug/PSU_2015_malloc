@@ -5,12 +5,13 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Thu Jan 28 10:25:45 2016 Erwan Dupard
-// Last update Thu Jan 28 16:07:14 2016 Erwan Dupard
+// Last update Thu Jan 28 17:19:30 2016 Erwan Dupard
 */
 
 #ifndef RESSOURCES_H_
 # define RESSOURCES_H_
 
+# include <stdio.h>
 # include <unistd.h>
 
 /*
@@ -53,12 +54,10 @@ typedef struct		s_block
   char			*data;   /* Pointer on s_block + sizeof(s_block) to have data pointer */
 }			t_block;
 
-
 /*
  * Heap Linked list ((META-DATA) DATA ) ---> ((META-DATA) DATA ) ---> NIL
  */
-void			*data = NULL;
-
+void		*data = NULL;
 
 /*
  * Size to jump at block to get data pointer
