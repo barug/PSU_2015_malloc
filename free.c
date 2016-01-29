@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Fri Jan 29 14:24:02 2016 Erwan Dupard
-** Last update Fri Jan 29 17:20:21 2016 Erwan Dupard
+** Last update Fri Jan 29 17:21:23 2016 Erwan Dupard
 */
 
 #include "ressources.h"
@@ -24,7 +24,7 @@ void			free(void *ptr)
     {
       currentElem = get_elem_by_ptr(ptr);
       currentElem->free = 1;
-      if (!currentElem->next) 
+      if (currentElem->next == NULL) 
 	{
 	  printf("reducing heap size\n");
 	  printf("Prev : %p\n", currentElem->prev);
