@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Thu Jan 28 10:25:45 2016 Erwan Dupard
-// Last update Fri Jan 29 14:39:46 2016 Barthelemy Gouby
+// Last update Fri Jan 29 15:18:53 2016 Erwan Dupard
 */
 
 #ifndef RESSOURCES_H_
@@ -49,6 +49,7 @@ typedef struct		s_block
   size_t		size;    /* Size of allocated block */
   char			free;
   struct s_block	*next;   /* Next memory block */
+  struct s_block	*prev;	 /* Prev memory block */
   void			*data;   /* Pointer on s_block + sizeof(s_block) to have data pointer */
 }			t_block;
 
