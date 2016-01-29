@@ -5,11 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Tue Jan 26 23:51:05 2016 Erwan Dupard
-<<<<<<< HEAD
-** Last update Fri Jan 29 16:43:23 2016 Barthelemy Gouby
-=======
-** Last update Fri Jan 29 15:24:59 2016 Erwan Dupard
->>>>>>> d51c49cd0e84e661d639805ad36e0a95a8a65328
+** Last update Fri Jan 29 16:51:18 2016 Barthelemy Gouby
 */
 
 #include <unistd.h>
@@ -23,9 +19,10 @@ static void	*extend_memory(size_t size)
   t_block	*iterator;
 
   printf("incrementing heap size\n");
-  if ((new = sbrk(NODE_SIZE + size)) == (void *) -1)
+  new = sbrk(0);
+  if (sbrk(NODE_SIZE + size) == (void *) -1)
     return (NULL);
-  new->data = (new + NODE_SIZE);
+  new->data = (char *)(new + NODE_SIZE);
   new->size = size;
   new->free = 0;
   new->next = NULL;
@@ -52,11 +49,12 @@ static void	*find_free_block(size_t size)
     return (NULL);
   while (iterator->next)
     {
-      if (iterator->free == 1 && iterator->size >= size) {
-	printf("found free block\n");
-	iterator->free = 0;
-	return (iterator->data);
-      }
+      if (iterator->free && iterator->size >= size)
+	{
+	  printf("found free block\n");
+	  iterator->free = 0;
+	  return (iterator->data);
+	}
       iterator = iterator->next;
     }
   return (NULL);
