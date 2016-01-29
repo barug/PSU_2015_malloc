@@ -5,7 +5,7 @@
 ## Login   <dupard_e@epitech.net>
 ## 
 ## Started on  Tue Jan 26 23:48:36 2016 Erwan Dupard
-## Last update Fri Jan 29 15:29:53 2016 Erwan Dupard
+## Last update Fri Jan 29 17:00:30 2016 Erwan Dupard
 ##
 
 CC		= gcc
@@ -20,7 +20,7 @@ SRCS		= malloc.c		\
 
 OBJS		= $(SRCS:.c=.o)
 
-CFLAGS		+= -fPIC -Wall -Werror -Wextra
+CFLAGS		+= -g3 -fPIC -Wall -Werror -Wextra
 
 LDFLAGS		+= -shared
 
