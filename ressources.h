@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Thu Jan 28 10:25:45 2016 Erwan Dupard
-// Last update Thu Jan 28 17:19:30 2016 Erwan Dupard
+// Last update Fri Jan 29 13:02:12 2016 Erwan Dupard
 */
 
 #ifndef RESSOURCES_H_
@@ -14,10 +14,8 @@
 # include <stdio.h>
 # include <unistd.h>
 
-/*
- * Align 32bits int
- */
-# define align4(x) (((((x) - 1) >> 2) << 2) + 4)
+# define RETURN_SUCCESS (0)
+# define RETURN_FAILURE (1)
 
 /*
  * Malloc implementation
@@ -50,8 +48,7 @@ typedef struct		s_block
 {
   size_t		size;    /* Size of allocated block */
   struct s_block	*next;   /* Next memory block */
-  int			free;    /* Is the pointed byte is ready to be allocated */
-  char			*data;   /* Pointer on s_block + sizeof(s_block) to have data pointer */
+  void			*data;   /* Pointer on s_block + sizeof(s_block) to have data pointer */
 }			t_block;
 
 /*
