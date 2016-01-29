@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Tue Jan 26 23:51:05 2016 Erwan Dupard
-** Last update Fri Jan 29 15:19:44 2016 Erwan Dupard
+** Last update Fri Jan 29 15:22:36 2016 Erwan Dupard
 */
 
 #include <unistd.h>
@@ -32,6 +32,7 @@ static void	*extend_memory(size_t size)
   iterator = g_data;
   while (iterator->next)
     iterator = iterator->next;
+  new->prev = iterator;
   iterator->next = new;
   return (new->data);
 }
