@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Tue Jan 26 23:51:05 2016 Erwan Dupard
-** Last update Fri Jan 29 16:11:54 2016 Erwan Dupard
+** Last update Fri Jan 29 16:29:31 2016 Erwan Dupard
 */
 
 #include <unistd.h>
@@ -18,9 +18,10 @@ static void	*extend_memory(size_t size)
   t_block	*new;
   t_block	*iterator;
 
-  if ((new = sbrk(NODE_SIZE + size)) == (void *) -1)
+  new = sbrk(0);
+  if (sbrk(NODE_SIZE + size) == (void *) -1)
     return (NULL);
-  new->data = (new + NODE_SIZE);
+  new->data = (char *)(new + NODE_SIZE);
   new->size = size;
   new->free = 0;
   new->next = NULL;
