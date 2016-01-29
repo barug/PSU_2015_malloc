@@ -5,11 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Tue Jan 26 23:51:05 2016 Erwan Dupard
-<<<<<<< HEAD
-** Last update Fri Jan 29 15:22:55 2016 Barthelemy Gouby
-=======
-** Last update Fri Jan 29 15:14:43 2016 Erwan Dupard
->>>>>>> 8e3cceecf71bb9cf01159023c28bf9188c3c931f
+** Last update Fri Jan 29 15:24:52 2016 Barthelemy Gouby
 */
 
 #include <unistd.h>
@@ -37,11 +33,12 @@ static void	*extend_memory(size_t size)
   iterator = g_data;
   while (iterator->next)
     iterator = iterator->next;
+  new->prev = iterator;
   iterator->next = new;
   return (new->data);
 }
 
-static void*	find_free_block(size_t size)
+static void	*find_free_block(size_t size)
 {
   t_block	*iterator;
 
