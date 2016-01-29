@@ -5,11 +5,13 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Tue Jan 26 23:51:05 2016 Erwan Dupard
-** Last update Fri Jan 29 13:05:52 2016 Erwan Dupard
+** Last update Fri Jan 29 14:30:31 2016 Erwan Dupard
 */
 
 #include <unistd.h>
 #include "ressources.h"
+
+void		*g_data = NULL;
 
 static int	extend_memory(size_t size)
 {
@@ -21,12 +23,12 @@ static int	extend_memory(size_t size)
   new->data = (new + NODE_SIZE);
   new->size = size;
   new->next = NULL;
-  if (data == NULL)
+  if (g_data == NULL)
     {
-      data = new;
+      g_data = new;
       return (RETURN_SUCCESS);
     }
-  iterator = data;
+  iterator = g_data;
   while (iterator->next)
     iterator = iterator->next;
   iterator->next = new;
@@ -37,7 +39,7 @@ static t_block	*get_last_elem()
 {
   t_block	*iterator;
 
-  iterator = data;
+  iterator = g_data;
   if (!iterator)
     return (NULL);
   while (iterator->next)

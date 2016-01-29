@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Thu Jan 28 10:25:45 2016 Erwan Dupard
-// Last update Fri Jan 29 13:02:12 2016 Erwan Dupard
+// Last update Fri Jan 29 14:29:03 2016 Erwan Dupard
 */
 
 #ifndef RESSOURCES_H_
@@ -54,7 +54,7 @@ typedef struct		s_block
 /*
  * Heap Linked list ((META-DATA) DATA ) ---> ((META-DATA) DATA ) ---> NIL
  */
-void		*data = NULL;
+extern void		*g_data;
 
 /*
  * Size to jump at block to get data pointer
