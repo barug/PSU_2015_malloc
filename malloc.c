@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Tue Jan 26 23:51:05 2016 Erwan Dupard
-** Last update Fri Jan 29 15:24:59 2016 Erwan Dupard
+** Last update Fri Jan 29 16:11:54 2016 Erwan Dupard
 */
 
 #include <unistd.h>
@@ -47,7 +47,7 @@ static void	*find_free_block(size_t size)
     return (NULL);
   while (iterator->next)
     {
-      if (iterator->free == 1 && iterator->size >= size)
+      if (iterator->free && iterator->size >= size)
 	return (iterator->data);
       iterator = iterator->next;
     }
