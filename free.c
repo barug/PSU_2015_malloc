@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Fri Jan 29 14:24:02 2016 Erwan Dupard
-** Last update Fri Jan 29 16:58:36 2016 Erwan Dupard
+** Last update Fri Jan 29 17:04:39 2016 Barthelemy Gouby
 */
 
 #include "ressources.h"
@@ -28,6 +28,8 @@ void			free(void *ptr)
 	printf("reducing heap size\n");
 	if (currentElem->prev)
 	  currentElem->prev->next = NULL;
+	else
+	  g_data = NULL;
 	sbrk(-(NODE_SIZE + currentElem->size));
       }
       printf("--------------\n");
