@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Thu Jan 28 10:25:45 2016 Erwan Dupard
-// Last update Fri Jan 29 16:28:46 2016 Erwan Dupard
+// Last update Fri Jan 29 17:31:29 2016 Erwan Dupard
 */
 
 #ifndef RESSOURCES_H_
@@ -16,6 +16,9 @@
 
 # define RETURN_SUCCESS (0)
 # define RETURN_FAILURE (1)
+
+
+# define align4(x) (((((x) - 1) >> 2) << 2) + 4)
 
 /*
  * Malloc implementation
@@ -47,7 +50,7 @@ void			show_alloc_mem();
 typedef struct		s_block
 {
   size_t		size;    /* Size of allocated block */
-  char			free;
+  int			free;
   struct s_block	*next;   /* Next memory block */
   struct s_block	*prev;	 /* Prev memory block */
   char			*data;   /* Pointer on s_block + sizeof(s_block) to have data pointer */
@@ -61,6 +64,6 @@ extern void		*g_data;
 /*
  * Size to jump at block to get data pointer
  */
-# define NODE_SIZE	((sizeof(struct s_block)))
+# define NODE_SIZE	((sizeof (struct s_block)))
 
 #endif /* ! RESSOURCES_H_ */

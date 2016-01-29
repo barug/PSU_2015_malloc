@@ -5,10 +5,12 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Fri Jan 29 14:24:02 2016 Erwan Dupard
-** Last update Fri Jan 29 17:21:23 2016 Erwan Dupard
+** Last update Fri Jan 29 17:23:05 2016 Erwan Dupard
 */
 
 #include "ressources.h"
+
+void			*data = NULL;
 
 static t_block		*get_elem_by_ptr(void *ptr)
 {

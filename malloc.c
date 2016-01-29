@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Tue Jan 26 23:51:05 2016 Erwan Dupard
-** Last update Fri Jan 29 17:19:57 2016 Erwan Dupard
+** Last update Fri Jan 29 17:24:51 2016 Erwan Dupard
 */
 
 #include <unistd.h>
@@ -64,6 +64,7 @@ void		*malloc(size_t size)
 {
   void		*allocated_block;
 
+  size = align4(size);
   printf("executing malloc\n");
   if (size <= 0)
     return (NULL);
