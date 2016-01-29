@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Fri Jan 29 15:27:29 2016 Erwan Dupard
-** Last update Fri Jan 29 15:31:43 2016 Erwan Dupard
+** Last update Fri Jan 29 15:33:45 2016 Erwan Dupard
 */
 
 #include "ressources.h"
@@ -18,9 +18,12 @@ void			show_alloc_mem()
 
   printf("break : %p\n", g_data);
   iterator = g_data;
-  while (iterator->next)
+  if (iterator != NULL)
     {
-      printf("%p - %p : %d bytes\n", iterator, iterator->next, (int)iterator->size);
-      iterator = iterator->next;
+      while (iterator->next)
+	{
+	  printf("%p - %p : %d bytes\n", iterator, iterator->next, (int)iterator->size);
+	  iterator = iterator->next;
+	}
     }
 }
