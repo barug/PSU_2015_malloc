@@ -5,7 +5,11 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Tue Jan 26 23:51:05 2016 Erwan Dupard
-** Last update Fri Jan 29 15:24:52 2016 Barthelemy Gouby
+<<<<<<< HEAD
+** Last update Fri Jan 29 16:43:23 2016 Barthelemy Gouby
+=======
+** Last update Fri Jan 29 15:24:59 2016 Erwan Dupard
+>>>>>>> d51c49cd0e84e661d639805ad36e0a95a8a65328
 */
 
 #include <unistd.h>
@@ -18,6 +22,7 @@ static void	*extend_memory(size_t size)
   t_block	*new;
   t_block	*iterator;
 
+  printf("incrementing heap size\n");
   if ((new = sbrk(NODE_SIZE + size)) == (void *) -1)
     return (NULL);
   new->data = (new + NODE_SIZE);
@@ -27,7 +32,7 @@ static void	*extend_memory(size_t size)
   if (g_data == NULL)
     {
       g_data = new;
-      new->prev = NULL;
+      new->prev = sbrk(0);
       return (new->data);
     }
   iterator = g_data;
@@ -47,8 +52,11 @@ static void	*find_free_block(size_t size)
     return (NULL);
   while (iterator->next)
     {
-      if (iterator->free == 1 && iterator->size >= size)
+      if (iterator->free == 1 && iterator->size >= size) {
+	printf("found free block\n");
+	iterator->free = 0;
 	return (iterator->data);
+      }
       iterator = iterator->next;
     }
   return (NULL);
@@ -58,6 +66,7 @@ void		*malloc(size_t size)
 {
   void		*allocated_block;
 
+  printf("executing malloc\n");
   if (size <= 0)
     return (NULL);
   if ((allocated_block = find_free_block(size)) == NULL)
@@ -65,5 +74,6 @@ void		*malloc(size_t size)
       if ((allocated_block = extend_memory(size)) == NULL)
 	return (NULL);
     }
+  printf("---------------\n");
   return (allocated_block);
 }
