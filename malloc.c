@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Tue Jan 26 23:51:05 2016 Erwan Dupard
-** Last update Fri Jan 29 14:30:31 2016 Erwan Dupard
+** Last update Fri Jan 29 15:10:18 2016 Erwan Dupard
 */
 
 #include <unistd.h>
@@ -49,9 +49,13 @@ static t_block	*get_last_elem()
 
 void		*malloc(size_t size)
 {
+  t_block		*last;
+
   if (size <= 0)
     return (NULL);
   if (extend_memory(size) == RETURN_FAILURE)
     return (NULL);
-  return (get_last_elem()->data);
+  if ((last = get_last_elem()) == NULL)
+    return (NULL);
+  return (last->data);
 }
