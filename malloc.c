@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Tue Jan 26 23:51:05 2016 Erwan Dupard
-** Last update Fri Jan 29 14:30:31 2016 Erwan Dupard
+** Last update Fri Jan 29 15:00:43 2016 Barthelemy Gouby
 */
 
 #include <unistd.h>
@@ -13,26 +13,27 @@
 
 void		*g_data = NULL;
 
-static int	extend_memory(size_t size)
+static void	*extend_memory(size_t size)
 {
   t_block	*new;
   t_block	*iterator;
 
   if ((new = sbrk(NODE_SIZE + size)) == (void *) -1)
-    return (RETURN_FAILURE);
+    return (NULL);
   new->data = (new + NODE_SIZE);
   new->size = size;
+  new->free = 0;
   new->next = NULL;
   if (g_data == NULL)
     {
       g_data = new;
-      return (RETURN_SUCCESS);
+      return (new->data);
     }
   iterator = g_data;
   while (iterator->next)
     iterator = iterator->next;
   iterator->next = new;
-  return (RETURN_SUCCESS);
+  return (new->data);
 }
 
 static t_block	*get_last_elem()
@@ -47,11 +48,32 @@ static t_block	*get_last_elem()
   return (iterator);
 }
 
+static void*	find_free_block(size_t size)
+{
+  t_block	*iterator;
+
+  iterator = g_data;
+  if (!iterator)
+    return (NULL);
+  while (iterator->next)
+    {
+      if (iterator->free == 1 && iterator->size >= size)
+	return (iterator->data);
+      iterator = iterator->next;
+    }
+  return (NULL);
+}
+
 void		*malloc(size_t size)
 {
+  void		*allocated_block;
+
   if (size <= 0)
     return (NULL);
-  if (extend_memory(size) == RETURN_FAILURE)
-    return (NULL);
-  return (get_last_elem()->data);
+  if ((allocated_block = find_free_block(size)) == NULL)
+    {
+      if ((allocated_bock = extend_memory(size)) == NULL)
+	return (NULL);
+    }
+  return (allocated_block);
 }
