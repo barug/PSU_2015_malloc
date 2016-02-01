@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Fri Jan 29 14:24:02 2016 Erwan Dupard
-** Last update Mon Feb  1 15:42:01 2016 Erwan Dupard
+** Last update Mon Feb  1 15:42:55 2016 Erwan Dupard
 Mon Feb  1 15:23:46 2016 Barthelemy Gouby
 */
 
@@ -13,7 +13,7 @@ Mon Feb  1 15:23:46 2016 Barthelemy Gouby
 
 static t_block		*get_elem_by_ptr(void *ptr)
 {
-  return ((t_block *)ptr - NODE_SIZE);
+  return ((t_block *)(ptr - NODE_SIZE));
 }
 
 void			free(void *ptr)
