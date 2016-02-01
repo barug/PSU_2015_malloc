@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Fri Jan 29 15:27:29 2016 Erwan Dupard
-** Last update Mon Feb  1 15:27:34 2016 Erwan Dupard
+** Last update Mon Feb  1 16:43:24 2016 Barthelemy Gouby
 */
 
 #include "ressources.h"
@@ -16,7 +16,7 @@ void			show_alloc_mem()
 {
   t_block		*iterator;
 
-  printf("break : %p\n", g_data);
+  printf("break : %p\n", sbrk(0));
   iterator = g_data;
   if (iterator)
     {

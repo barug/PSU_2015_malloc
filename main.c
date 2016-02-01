@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Fri Jan 29 15:28:14 2016 Barthelemy Gouby
-** Last update Fri Jan 29 18:32:41 2016 Barthelemy Gouby
+** Last update Mon Feb  1 17:03:49 2016 Barthelemy Gouby
 */
 
 #include "ressources.h"
@@ -33,7 +33,7 @@ int	main()
   printf("int4: %p\n\n", int4);
 
   free(int2);
-
+  show_alloc_mem();
   if (!(int5 = malloc(sizeof(int5))))
       printf("malloc failed\n");
   printf("int1: %p\n", int1);
@@ -58,6 +58,10 @@ int	main()
   free(int5);
   free(int3);
   free(int4);
+
+  show_alloc_mem();
+
+  printf("here\n");
 
   if (!(int1 = malloc(sizeof(int1))))
       printf("malloc failed\n");
