@@ -1,4 +1,5 @@
 # Test directory 
 
-test/
-minishell2/
+./test/
+./minishell2/
+./test_ls.sh
