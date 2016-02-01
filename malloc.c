@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Tue Jan 26 23:51:05 2016 Erwan Dupard
-** Last update Mon Feb  1 11:42:10 2016 Barthelemy Gouby
+** Last update Mon Feb  1 11:45:43 2016 Barthelemy Gouby
 */
 
 #include <unistd.h>
@@ -19,7 +19,7 @@ static void	*extend_memory(size_t size)
   t_block	*iterator;
   void		*test_ptr;
 
-  printf("incrementing heap size\n");
+  size += 50;
   new = sbrk(0);
   if (sbrk(NODE_SIZE + size) == (void *) -1)
     {
@@ -60,7 +60,6 @@ static void	*find_free_block(size_t size)
     {
       if (iterator->free && iterator->size >= size)
 	{
-	  printf("found free block\n");
 	  iterator->free = 0;
 	  return (iterator->data);
 	}
@@ -75,6 +74,7 @@ void		*malloc(size_t size)
 
   printf("size of metadata: %lu\n", NODE_SIZE);
   printf("executing malloc\n");
+  size = align4(size);
   if (size <= 0)
     return (NULL);
   if ((allocated_block = find_free_block(size)) == NULL)
@@ -82,6 +82,5 @@ void		*malloc(size_t size)
       if ((allocated_block = extend_memory(size)) == NULL)
 	return (NULL);
     }
-  printf("---------------\n");
   return (allocated_block);
 }

@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Fri Jan 29 14:24:02 2016 Erwan Dupard
-** Last update Fri Jan 29 17:53:39 2016 Barthelemy Gouby
+** Last update Mon Feb  1 11:47:40 2016 Barthelemy Gouby
 */
 
 #include "ressources.h"
@@ -21,7 +21,6 @@ void			free(void *ptr)
 
   if (ptr != NULL)
     {
-      printf("freeing block\n");
       currentElem = get_elem_by_ptr(ptr);
       currentElem->free = 1;
       if (!currentElem->next) {
