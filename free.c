@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Fri Jan 29 14:24:02 2016 Erwan Dupard
-** Last update Mon Feb  1 15:42:55 2016 Erwan Dupard
+** Last update Mon Feb  1 16:25:22 2016 Barthelemy Gouby
 Mon Feb  1 15:23:46 2016 Barthelemy Gouby
 */
 
@@ -24,13 +24,13 @@ void			free(void *ptr)
     {
       currentElem = get_elem_by_ptr(ptr);
       currentElem->free = 1;
-      if (currentElem->prev && currentElem->prev->free == 1) 
+      if (currentElem->prev && currentElem->prev->free) 
 	{
 	  currentElem->prev->next = currentElem->next;
 	  currentElem->prev->size += NODE_SIZE + currentElem->size;
 	  currentElem = currentElem->prev;
 	}
-      if (currentElem->next && currentElem->next->free == 1) 
+      if (currentElem->next && currentElem->next->free) 
 	{
 	  currentElem->size += NODE_SIZE + currentElem->next->size;
 	  currentElem->next = currentElem->next->next;
