@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Fri Jan 29 14:24:02 2016 Erwan Dupard
-** Last update Mon Feb  1 14:28:44 2016 Barthelemy Gouby
+** Last update Mon Feb  1 15:23:46 2016 Barthelemy Gouby
 */
 
 #include "ressources.h"
@@ -19,10 +19,19 @@ void			free(void *ptr)
 {
   t_block		*currentElem;
 
-  if (ptr != NULL && 1 == 0)
+  if (ptr != NULL)
     {
       currentElem = get_elem_by_ptr(ptr);
       currentElem->free = 1;
+      if (currentElem->prev && currentElem->prev->free == 1) {
+	currentElem->prev->next = currentElem->next;
+	currentElem->prev->size += NODE_SIZE + currentElem->size;
+	currentElem = currentElem->prev;
+      }
+      if (currentElem->next && currentElem->next->free == 1) {
+	currentElem->size += NODE_SIZE + currentElem->next->size;
+	currentElem->next = currentElem->next->next;
+      }
       if (!currentElem->next) {
 	if (currentElem->prev)
 	  currentElem->prev->next = NULL;
