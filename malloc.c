@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Tue Jan 26 23:51:05 2016 Erwan Dupard
-** Last update Mon Feb  1 11:45:43 2016 Barthelemy Gouby
+** Last update Mon Feb  1 12:09:02 2016 Barthelemy Gouby
 */
 
 #include <unistd.h>
@@ -21,6 +21,7 @@ static void	*extend_memory(size_t size)
 
   size += 50;
   new = sbrk(0);
+  printf("node size: %lu, size: %lu\n", NODE_SIZE, size);
   if (sbrk(NODE_SIZE + size) == (void *) -1)
     {
       printf("increment failed\n");
@@ -72,9 +73,10 @@ void		*malloc(size_t size)
 {
   void		*allocated_block;
 
-  printf("size of metadata: %lu\n", NODE_SIZE);
   printf("executing malloc\n");
+  printf("raw data size: %lu\n", size);
   size = align4(size);
+  printf("aligned data size: %lu\n", size);
   if (size <= 0)
     return (NULL);
   if ((allocated_block = find_free_block(size)) == NULL)
@@ -82,5 +84,6 @@ void		*malloc(size_t size)
       if ((allocated_block = extend_memory(size)) == NULL)
 	return (NULL);
     }
+  printf("----------------\n");
   return (allocated_block);
 }
