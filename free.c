@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Fri Jan 29 14:24:02 2016 Erwan Dupard
-** Last update Mon Feb  1 11:59:17 2016 Barthelemy Gouby
+** Last update Mon Feb  1 14:28:44 2016 Barthelemy Gouby
 */
 
 #include "ressources.h"
@@ -19,21 +19,17 @@ void			free(void *ptr)
 {
   t_block		*currentElem;
 
-  if (ptr != NULL)
+  if (ptr != NULL && 1 == 0)
     {
-      printf("executing free\n");
       currentElem = get_elem_by_ptr(ptr);
       currentElem->free = 1;
       if (!currentElem->next) {
-	printf("reducing heap size\n");
 	if (currentElem->prev)
 	  currentElem->prev->next = NULL;
 	else {
-	  printf("heap is empty\n");
 	  g_data = NULL;
 	}
 	sbrk(-(NODE_SIZE + currentElem->size));
       }
-      printf("--------------\n");
     }
 }
