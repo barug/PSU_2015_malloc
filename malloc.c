@@ -5,24 +5,22 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Tue Jan 26 23:51:05 2016 Erwan Dupard
-** Last update Fri Jan 29 18:29:35 2016 Erwan Dupard
+** Last update Mon Feb  1 14:11:25 2016 Erwan Dupard
 */
 
 #include <unistd.h>
 #include "ressources.h"
 
-void		*g_data = NULL;
+void		*g_data;
 
 static void	*extend_memory(size_t size)
 {
   t_block	*new;
   t_block	*iterator;
 
-  size += 50;
   new = sbrk(0);
   if (sbrk(NODE_SIZE + size) == (void *) -1)
     return (NULL);
-  new->data = (char *)(new + NODE_SIZE);
   new->size = size;
   new->free = 0;
   new->next = NULL;

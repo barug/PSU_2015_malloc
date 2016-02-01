@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Fri Jan 29 14:24:02 2016 Erwan Dupard
-** Last update Fri Jan 29 17:55:57 2016 Erwan Dupard
+** Last update Fri Jan 29 18:45:39 2016 Erwan Dupard
 */
 
 #include "ressources.h"
@@ -19,7 +19,8 @@ void			free(void *ptr)
 {
   t_block		*currentElem;
 
-  if (ptr != NULL)
+
+  if (ptr != NULL && 1 == 0)
     {
       currentElem = get_elem_by_ptr(ptr);
       currentElem->free = 1;
