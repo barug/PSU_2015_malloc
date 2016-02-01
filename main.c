@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Fri Jan 29 15:28:14 2016 Barthelemy Gouby
-** Last update Fri Jan 29 16:47:45 2016 Barthelemy Gouby
+** Last update Fri Jan 29 18:32:41 2016 Barthelemy Gouby
 */
 
 #include "ressources.h"
@@ -54,5 +54,70 @@ int	main()
   *int4 = 4;
   
   printf("int1: %i, int5: %i, int3: %i, int4: %i\n", *int1, *int5, *int3, *int4);
+  free(int1);
+  free(int5);
+  free(int3);
+  free(int4);
+
+  if (!(int1 = malloc(sizeof(int1))))
+      printf("malloc failed\n");
+  if (!(int2 = malloc(sizeof(int2))))
+      printf("malloc failed\n");
+  if (!(int3 = malloc(sizeof(int3))))
+      printf("malloc failed\n");
+  if (!(int4 = malloc(sizeof(int4))))
+      printf("malloc failed\n");
+  if (!(int5 = malloc(sizeof(int5))))
+      printf("malloc failed\n");
+
+  printf("int1: %p\n", int1);
+
+  printf("\ntesting big malloc -----------------------------\n");
+
+  int i;
+
+  int	*tab;  
+  if (!(tab = malloc(sizeof(*tab) * 1000)))
+      printf("malloc failed\n");  
+  for (i = 0; i < 1000; i++) {
+    tab[i] = 0;
+  }
+
+  printf("\ntesting big malloc -----------------------------\n");
+
+  int	*tab2;  
+  if (!(tab2 = malloc(sizeof(*tab2) * 1000)))
+      printf("malloc failed\n");  
+  for (i = 0; i < 1000; i++) {
+    tab2[i] = 0;
+  }
+
+  printf("\ntesting big malloc -----------------------------\n");
+
+  int	*tab3;  
+  if (!(tab3 = malloc(sizeof(*tab3) * 1000)))
+      printf("malloc failed\n");  
+  for (i = 0; i < 1000; i++) {
+    tab3[i] = 0;
+  }
+
+  printf("\ntesting big malloc -----------------------------\n");
+
+  int	*tab4;  
+  if (!(tab4 = malloc(sizeof(*tab4) * 1000)))
+      printf("malloc failed\n");  
+  for (i = 0; i < 1000; i++) {
+    tab4[i] = 0;
+  }
+
+  printf("\ntesting big malloc -----------------------------\n");
+
+  int	*tab5;  
+  if (!(tab5 = malloc(sizeof(*tab5) * 1000)))
+      printf("malloc failed\n");  
+  for (i = 0; i < 1000; i++) {
+    tab5[i] = 0;
+  }
+
   return (0);
 }

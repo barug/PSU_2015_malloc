@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Tue Jan 26 23:51:05 2016 Erwan Dupard
-** Last update Fri Jan 29 17:05:37 2016 Barthelemy Gouby
+** Last update Mon Feb  1 11:42:10 2016 Barthelemy Gouby
 */
 
 #include <unistd.h>
@@ -17,11 +17,20 @@ static void	*extend_memory(size_t size)
 {
   t_block	*new;
   t_block	*iterator;
+  void		*test_ptr;
 
   printf("incrementing heap size\n");
   new = sbrk(0);
   if (sbrk(NODE_SIZE + size) == (void *) -1)
-    return (NULL);
+    {
+      printf("increment failed\n");
+      return (NULL);
+    }
+  test_ptr = sbrk(0);
+  printf("supposed allocated block size: %lu\n", NODE_SIZE + size);
+  printf("new node ptr: %p\n", new);
+  printf("heap break point: %p\n", test_ptr);
+  printf("real allocated block size: %lu\n", (long unsigned int) (test_ptr) - (long unsigned int) (new));
   new->data = (char *)(new + NODE_SIZE);
   new->size = size;
   new->free = 0;
@@ -64,6 +73,7 @@ void		*malloc(size_t size)
 {
   void		*allocated_block;
 
+  printf("size of metadata: %lu\n", NODE_SIZE);
   printf("executing malloc\n");
   if (size <= 0)
     return (NULL);
