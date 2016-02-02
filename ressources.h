@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Thu Jan 28 10:25:45 2016 Erwan Dupard
-// Last update Mon Feb  1 16:21:38 2016 Barthelemy Gouby
+// Last update Mon Feb  1 17:38:39 2016 Barthelemy Gouby
 */
 
 #ifndef RESSOURCES_H_
@@ -40,7 +40,6 @@ void			free(void *ptr);
  */
 void			show_alloc_mem();
 
-
 /*
  * Definition of memory block (set in malloc , used for free)
  * We can call this "Meta-data"
@@ -55,6 +54,8 @@ typedef struct		s_block
   struct s_block	*prev;	 /* Prev memory block */
   char			data[1];/* Pointer on s_block + sizeof(s_block) to have data pointer */
 }			t_block;
+
+t_block			*get_elem_by_ptr(void *ptr);
 
 /*
  * Heap Linked list ((META-DATA) DATA ) ---> ((META-DATA) DATA ) ---> NIL
