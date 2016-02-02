@@ -5,8 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Fri Jan 29 14:24:02 2016 Erwan Dupard
-** Last update Tue Feb  2 14:42:03 2016 Erwan Dupard
-Mon Feb  1 15:23:46 2016 Barthelemy Gouby
+** Last update Tue Feb  2 14:49:26 2016 Erwan Dupard
 */
 
 #include "ressources.h"
@@ -14,6 +13,14 @@ Mon Feb  1 15:23:46 2016 Barthelemy Gouby
 t_block			*get_elem_by_ptr(void *ptr)
 {
   return ((ptr - NODE_SIZE));
+}
+
+static void		fusion_next_block(t_block *currentElem)
+{
+  currentElem->size += NODE_SIZE + currentElem->next->size;
+  currentElem->next = currentElem->next->next;
+  if (currentElem->next)
+    currentElem->next->prev = currentElem;
 }
 
 void			free(void *ptr)
@@ -26,15 +33,11 @@ void			free(void *ptr)
       currentElem->free = 1;
       if (currentElem->prev && currentElem->prev->free) 
 	{
-	  currentElem->prev->next = currentElem->next;
-	  currentElem->prev->size += NODE_SIZE + currentElem->size;
 	  currentElem = currentElem->prev;
+	  fusion_next_block(currentElem);
 	}
       if (currentElem->next && currentElem->next->free) 
-	{
-	  currentElem->size += NODE_SIZE + currentElem->next->size;
-	  currentElem->next = currentElem->next->next;
-	}
+	fusion_next_block(currentElem);
       if (!currentElem->next) 
 	{
 	  if (currentElem->prev)
