@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Fri Jan 29 15:27:29 2016 Erwan Dupard
-** Last update Mon Feb  1 16:43:24 2016 Barthelemy Gouby
+** Last update Tue Feb  2 17:20:02 2016 Barthelemy Gouby
 */
 
 #include "ressources.h"
@@ -20,7 +20,7 @@ void			show_alloc_mem()
   iterator = g_data;
   if (iterator)
     {
-      while (iterator->next)
+      while (iterator)
 	{
 	  printf("%p - %p : %d bytes\n", iterator->data, iterator->next, (int)iterator->size);
 	  iterator = iterator->next;

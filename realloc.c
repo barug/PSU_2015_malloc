@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Mon Feb  1 14:44:26 2016 Erwan Dupard
-** Last update Tue Feb  2 15:14:56 2016 Barthelemy Gouby
+** Last update Tue Feb  2 16:53:36 2016 Barthelemy Gouby
 */
 
 #include "ressources.h"
@@ -42,6 +42,5 @@ void		*realloc(void *ptr, size_t size)
       iterator = iterator->next;
     }
   newBlock = extend_memory(size);
-  copyBlock(newBlock, original);
-  return (newBlock);
+  return (copyBlock(newBlock, original));
 }
