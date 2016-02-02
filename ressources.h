@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Thu Jan 28 10:25:45 2016 Erwan Dupard
-// Last update Tue Feb  2 12:58:44 2016 Erwan Dupard
+// Last update Tue Feb  2 13:26:24 2016 Erwan Dupard
 */
 
 #ifndef RESSOURCES_H_
@@ -34,8 +34,6 @@ typedef struct		s_block
   struct s_block	*prev;	 /* Prev memory block */
   char			data[1];/* Pointer on s_block + sizeof(s_block) to have data pointer */
 }			t_block;
-
-
 
 /*
  * Malloc implementation
