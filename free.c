@@ -5,15 +5,14 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Fri Jan 29 14:24:02 2016 Erwan Dupard
-** Last update Mon Feb  1 17:37:51 2016 Barthelemy Gouby
-Mon Feb  1 15:23:46 2016 Barthelemy Gouby
+** Last update Tue Feb  2 14:47:26 2016 Barthelemy Gouby
 */
 
 #include "ressources.h"
 
 t_block			*get_elem_by_ptr(void *ptr)
 {
-  return ((t_block *)(ptr - NODE_SIZE));
+  return ((ptr - NODE_SIZE));
 }
 
 static void		fusion_next_block(t_block *currentElem)

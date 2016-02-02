@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Tue Jan 26 23:51:05 2016 Erwan Dupard
-** Last update Mon Feb  1 16:34:27 2016 Erwan Dupard
+** Last update Tue Feb  2 12:55:59 2016 Erwan Dupard
 */
 
 #include <unistd.h>
@@ -13,7 +13,7 @@
 
 void		*g_data;
 
-static void	*extend_memory(size_t size)
+void		*extend_memory(size_t size)
 {
   t_block	*new;
   t_block	*iterator;
