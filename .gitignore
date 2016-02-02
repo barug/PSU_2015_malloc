@@ -2,4 +2,4 @@
 
 test/*
 minishell2/*
-test_ls.sh
+ls.sh
