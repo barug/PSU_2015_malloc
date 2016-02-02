@@ -5,7 +5,7 @@
 ## Login   <dupard_e@epitech.net>
 ## 
 ## Started on  Tue Jan 26 23:48:36 2016 Erwan Dupard
-## Last update Mon Feb  1 14:45:32 2016 Erwan Dupard
+## Last update Mon Feb  1 17:28:01 2016 Erwan Dupard
 ##
 
 CC		= gcc
@@ -17,6 +17,7 @@ NAME		= libmy_malloc.so
 SRCS		= malloc.c		\
 		  free.c		\
 		  show_alloc_mem.c	\
+		  memory_dump.c		\
 	 	  realloc.c
 
 OBJS		= $(SRCS:.c=.o)
