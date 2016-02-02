@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Fri Jan 29 14:24:02 2016 Erwan Dupard
-** Last update Tue Feb  2 13:07:55 2016 Erwan Dupard
+** Last update Tue Feb  2 14:42:03 2016 Erwan Dupard
 Mon Feb  1 15:23:46 2016 Barthelemy Gouby
 */
 
@@ -41,7 +41,7 @@ void			free(void *ptr)
 	    currentElem->prev->next = NULL;
 	  else 
 	    g_data = NULL;
-	  sbrk(-(NODE_SIZE + currentElem->size));
+	  (void)sbrk(-(NODE_SIZE + currentElem->size));
 	}
     }
 }
