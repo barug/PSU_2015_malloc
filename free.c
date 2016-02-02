@@ -5,13 +5,13 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Fri Jan 29 14:24:02 2016 Erwan Dupard
-** Last update Mon Feb  1 16:25:22 2016 Barthelemy Gouby
+** Last update Tue Feb  2 13:06:35 2016 Erwan Dupard
 Mon Feb  1 15:23:46 2016 Barthelemy Gouby
 */
 
 #include "ressources.h"
 
-static t_block		*get_elem_by_ptr(void *ptr)
+t_block			*get_elem_by_ptr(void *ptr)
 {
   return ((t_block *)(ptr - NODE_SIZE));
 }
