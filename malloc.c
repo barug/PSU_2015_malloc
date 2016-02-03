@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Tue Jan 26 23:51:05 2016 Erwan Dupard
-** Last update Tue Feb  2 12:55:59 2016 Erwan Dupard
+** Last update Wed Feb  3 15:17:47 2016 Erwan Dupard
 */
 
 #include <unistd.h>
@@ -45,6 +45,7 @@ static void	*find_free_block(size_t size)
   iterator = g_data;
   if (!iterator)
     return (NULL);
+  printf("iterator : %p\n", iterator);
   while (iterator->next)
     {
       if (iterator->free && iterator->size >= size)
