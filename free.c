@@ -5,10 +5,12 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Fri Jan 29 14:24:02 2016 Erwan Dupard
-** Last update Wed Feb  3 17:03:48 2016 Barthelemy Gouby
+** Last update Wed Feb  3 17:48:19 2016 Barthelemy Gouby
 */
 
 #include "ressources.h"
+
+t_block			*g_data;
 
 static void		fusion_next_block(t_block *currentElem)
 {
@@ -20,7 +22,10 @@ static void		fusion_next_block(t_block *currentElem)
 
 t_block			*get_elem_by_ptr(void *ptr)
 {
-  return ((ptr - NODE_SIZE));
+  char			*tmp;
+
+  tmp = ptr;
+  return (ptr = tmp -= NODE_SIZE);
 }
 
 void			free(void *ptr)
@@ -38,10 +43,10 @@ void			free(void *ptr)
       	}
       if (currentElem->next && currentElem->next->free)
       	fusion_next_block(currentElem);
-      if (!currentElem->next) 
+      if (!currentElem->prev) 
 	{
-	  if (currentElem->prev)
-	    currentElem->prev->next = NULL;
+	  if (currentElem->next)
+	    currentElem->next->prev = NULL;
 	  else 
 	    g_data = NULL;
 	  (void)sbrk(-(NODE_SIZE + currentElem->size));

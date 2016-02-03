@@ -5,12 +5,12 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Mon Feb  1 14:44:26 2016 Erwan Dupard
-** Last update Wed Feb  3 17:03:29 2016 Barthelemy Gouby
+** Last update Wed Feb  3 17:28:34 2016 Barthelemy Gouby
 */
 
 #include "ressources.h"
 
-void		*g_data;
+t_block		*g_data;
 
 static void	*copyBlock(t_block *d, t_block *s)
 {
@@ -31,15 +31,11 @@ void		*realloc(void *ptr, size_t size)
 
   if (ptr == NULL)
     return (malloc(size));
-  if (size == 0) {
-    return (NULL);
-  }
-    
-  /* if (size == 0) */
-  /*   { */
-  /*     free (ptr); */
-  /*     return (NULL); */
-  /*   } */
+  if (size == 0)
+    {
+      free (ptr);
+      return (NULL);
+    }
   original = get_elem_by_ptr(ptr);
   if (original->size >= size)
     return (original->data);
