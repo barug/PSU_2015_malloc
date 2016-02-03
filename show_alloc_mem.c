@@ -5,12 +5,12 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Fri Jan 29 15:27:29 2016 Erwan Dupard
-** Last update Tue Feb  2 17:48:13 2016 Barthelemy Gouby
+** Last update Wed Feb  3 16:47:10 2016 Erwan Dupard
 */
 
 #include "ressources.h"
 
-void			*g_data;
+t_block			*g_data;
 
 void			show_alloc_mem()
 {

@@ -5,14 +5,14 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Mon Feb  1 17:21:36 2016 Erwan Dupard
-** Last update Mon Feb  1 17:37:29 2016 Erwan Dupard
+** Last update Wed Feb  3 16:47:17 2016 Erwan Dupard
 */
 
 #include "ressources.h"
 
 # define IS_PRINTABLE(c) ((c >= ' ' && c <= '~'))
 
-void			*g_data;
+t_block			*g_data;
 
 void			display_block_data(t_block *block)
 {

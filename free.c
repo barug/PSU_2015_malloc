@@ -5,10 +5,12 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Fri Jan 29 14:24:02 2016 Erwan Dupard
-** Last update Wed Feb  3 16:39:50 2016 Erwan Dupard
+** Last update Wed Feb  3 16:47:36 2016 Erwan Dupard
 */
 
 #include "ressources.h"
+
+t_block			*g_data;
 
 static void		fusion_next_block(t_block *currentElem)
 {

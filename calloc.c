@@ -5,12 +5,14 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Tue Feb  2 17:53:21 2016 Barthelemy Gouby
-** Last update Tue Feb  2 18:01:54 2016 Barthelemy Gouby
+** Last update Wed Feb  3 16:47:21 2016 Erwan Dupard
 */
 
 #include <stdio.h>
 #include <string.h>
 #include "ressources.h"
+
+t_block		*g_data;
 
 void		*calloc(size_t nmemb, size_t size)
 {

@@ -5,12 +5,12 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Mon Feb  1 14:44:26 2016 Erwan Dupard
-** Last update Wed Feb  3 16:38:58 2016 Erwan Dupard
+** Last update Wed Feb  3 16:47:06 2016 Erwan Dupard
 */
 
 #include "ressources.h"
 
-void		*g_data;
+t_block		*g_data;
 
 static void	*copyBlock(t_block *d, t_block *s)
 {

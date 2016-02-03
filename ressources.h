@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Thu Jan 28 10:25:45 2016 Erwan Dupard
-// Last update Wed Feb  3 16:36:21 2016 Erwan Dupard
+// Last update Wed Feb  3 16:46:05 2016 Erwan Dupard
 */
 
 #ifndef RESSOURCES_H_
@@ -68,7 +68,7 @@ t_block			*get_elem_by_ptr(void *ptr);
 /*
  * Heap Linked list ((META-DATA) DATA ) ---> ((META-DATA) DATA ) ---> NIL
  */
-extern void		*g_data;
+extern t_block		*g_data;
 
 /*
  * Size to jump at block to get data pointer
