@@ -5,13 +5,13 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Tue Jan 26 23:51:05 2016 Erwan Dupard
-** Last update Wed Feb  3 18:02:32 2016 Erwan Dupard
+** Last update Wed Feb  3 18:04:40 2016 Erwan Dupard
 */
 
 #include <unistd.h>
 #include "ressources.h"
 
-t_block		*g_data = NULL;
+t_block		*g_data;
 
 void		*extend_memory(size_t size)
 {
