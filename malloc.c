@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Tue Jan 26 23:51:05 2016 Erwan Dupard
-** Last update Wed Feb  3 16:48:10 2016 Erwan Dupard
+** Last update Wed Feb  3 17:00:36 2016 Erwan Dupard
 */
 
 #include <unistd.h>
@@ -59,5 +59,6 @@ void		*malloc(size_t size)
       if ((allocated_block = extend_memory(size)) == NULL)
 	return (NULL);
     }
+  printf("Malloc(%lu) : %p\n", size, allocated_block);
   return (allocated_block);
 }

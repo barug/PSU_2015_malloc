@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Mon Feb  1 14:44:26 2016 Erwan Dupard
-** Last update Wed Feb  3 16:47:06 2016 Erwan Dupard
+** Last update Wed Feb  3 17:00:15 2016 Erwan Dupard
 */
 
 #include "ressources.h"
@@ -25,6 +25,7 @@ static void	*copyBlock(t_block *d, t_block *s)
 
 void		*realloc(void *ptr, size_t size)
 {
+  printf("Realloc(%lu) : %p\n", size, ptr);
   t_block	*iterator;
   t_block	*original;
   t_block	*newBlock;
@@ -47,10 +48,12 @@ void		*realloc(void *ptr, size_t size)
       if (iterator->size >= size && iterator->free == 1)
 	{
 	  iterator->free = 0;
+	  printf("Realloc OK\n");
 	  return (copyBlock(iterator, original));
 	}
       iterator = iterator->next;
     }
   newBlock = extend_memory(size);
+  printf("Realloc OK\n");
   return (copyBlock(newBlock, original));
 }
