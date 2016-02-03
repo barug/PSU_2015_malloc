@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Fri Jan 29 14:24:02 2016 Erwan Dupard
-** Last update Wed Feb  3 16:34:59 2016 Erwan Dupard
+** Last update Wed Feb  3 16:39:50 2016 Erwan Dupard
 */
 
 #include "ressources.h"
@@ -39,7 +39,6 @@ void			free(void *ptr)
 	  currentElem = currentElem->prev;
 	  fusion_next_block(currentElem);
 	}
-      printf("NEXT : %p\n", currentElem->next);
       if (currentElem->next && currentElem->next->free) 
 	fusion_next_block(currentElem);
       if (!currentElem->next) 
