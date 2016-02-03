@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Thu Jan 28 10:25:45 2016 Erwan Dupard
-// Last update Wed Feb  3 16:46:05 2016 Erwan Dupard
+// Last update Wed Feb  3 18:26:16 2016 Erwan Dupard
 */
 
 #ifndef RESSOURCES_H_
@@ -64,6 +64,8 @@ void			*extend_memory(size_t size);
  * Retreive Block by data pointer
  */
 t_block			*get_elem_by_ptr(void *ptr);
+
+void			my_memory_dump();
 
 /*
  * Heap Linked list ((META-DATA) DATA ) ---> ((META-DATA) DATA ) ---> NIL

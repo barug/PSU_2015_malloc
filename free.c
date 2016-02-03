@@ -6,7 +6,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Fri Jan 29 14:24:02 2016 Erwan Dupard
-** Last update Wed Feb  3 18:13:06 2016 Barthelemy Gouby
+** Last update Wed Feb  3 18:24:32 2016 Erwan Dupard
 */
 
 #include "ressources.h"
@@ -26,11 +26,21 @@ t_block			*get_elem_by_ptr(void *ptr)
   return ((t_block *)(ptr - NODE_SIZE));
 }
 
+int			valid_addr(void *p)
+{
+  if (g_data)
+    {
+      if (p > (void *)g_data && p < sbrk(0))
+	return (p == (get_elem_by_ptr(p))->data);
+    }
+  return (0);
+}
+
 void			free(void *ptr)
 {
   t_block		*currentElem;
 
-  if (ptr != NULL)
+  if (ptr != NULL && valid_addr(ptr))
     {
       currentElem = get_elem_by_ptr(ptr);
       currentElem->free = 1;
