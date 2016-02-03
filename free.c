@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Fri Jan 29 14:24:02 2016 Erwan Dupard
-** Last update Wed Feb  3 17:48:19 2016 Barthelemy Gouby
+** Last update Wed Feb  3 17:56:15 2016 Barthelemy Gouby
 */
 
 #include "ressources.h"
@@ -32,6 +32,7 @@ void			free(void *ptr)
 {
   t_block		*currentElem;
 
+  printf("FREEING : %p\n", ptr);
   if (ptr != NULL)
     {
       currentElem = get_elem_by_ptr(ptr);
@@ -52,4 +53,5 @@ void			free(void *ptr)
 	  (void)sbrk(-(NODE_SIZE + currentElem->size));
 	}
     }
+  printf("Free OK\n");
 }

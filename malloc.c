@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Tue Jan 26 23:51:05 2016 Erwan Dupard
-** Last update Wed Feb  3 17:50:45 2016 Barthelemy Gouby
+** Last update Wed Feb  3 17:56:04 2016 Barthelemy Gouby
 */
 
 #include <unistd.h>
@@ -66,5 +66,6 @@ void		*malloc(size_t size)
 	return (NULL);
       }
     }
+  printf("Malloc(%lu) : %p\n", size, allocated_block);
   return (allocated_block);
 }
