@@ -6,7 +6,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Fri Jan 29 14:24:02 2016 Erwan Dupard
-** Last update Wed Feb  3 18:03:25 2016 Erwan Dupard
+** Last update Wed Feb  3 18:13:06 2016 Barthelemy Gouby
 */
 
 #include "ressources.h"
@@ -44,7 +44,10 @@ void			free(void *ptr)
       if (!currentElem->prev) 
 	{
 	  if (currentElem->next)
-	    currentElem->next->prev = NULL;
+	    {
+	      currentElem->next->prev = NULL;
+	      g_data = currentElem->next;
+	    }
 	  else 
 	    g_data = NULL;
 	  (void)sbrk(-(NODE_SIZE + currentElem->size));
