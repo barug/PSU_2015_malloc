@@ -6,7 +6,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Fri Jan 29 14:24:02 2016 Erwan Dupard
-** Last update Wed Feb  3 17:57:13 2016 Barthelemy Gouby
+** Last update Wed Feb  3 18:03:25 2016 Erwan Dupard
 */
 
 #include "ressources.h"
@@ -23,11 +23,7 @@ static void		fusion_next_block(t_block *currentElem)
 
 t_block			*get_elem_by_ptr(void *ptr)
 {
-  char			*tmp;
-
-  tmp = ptr;
-  tmp -= NODE_SIZE;
-  return ((t_block *)tmp);
+  return ((t_block *)(ptr - NODE_SIZE));
 }
 
 void			free(void *ptr)
