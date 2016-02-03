@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Fri Jan 29 14:24:02 2016 Erwan Dupard
-** Last update Wed Feb  3 15:15:35 2016 Erwan Dupard
+** Last update Wed Feb  3 17:03:48 2016 Barthelemy Gouby
 */
 
 #include "ressources.h"
@@ -31,13 +31,13 @@ void			free(void *ptr)
     {
       currentElem = get_elem_by_ptr(ptr);
       currentElem->free = 1;
-      if (currentElem->prev && currentElem->prev->free) 
-	{
-	  currentElem = currentElem->prev;
-	  fusion_next_block(currentElem);
-	}
-      if (currentElem->next && currentElem->next->free) 
-	fusion_next_block(currentElem);
+      if (currentElem->prev && currentElem->prev->free)
+      	{
+      	  currentElem = currentElem->prev;
+      	  fusion_next_block(currentElem);
+      	}
+      if (currentElem->next && currentElem->next->free)
+      	fusion_next_block(currentElem);
       if (!currentElem->next) 
 	{
 	  if (currentElem->prev)

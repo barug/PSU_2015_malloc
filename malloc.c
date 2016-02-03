@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Tue Jan 26 23:51:05 2016 Erwan Dupard
-** Last update Tue Feb  2 12:55:59 2016 Erwan Dupard
+** Last update Wed Feb  3 17:03:33 2016 Barthelemy Gouby
 */
 
 #include <unistd.h>
@@ -62,12 +62,17 @@ void		*malloc(size_t size)
   void		*allocated_block;
 
   size = align4(size);
-  if (size <= 0)
+  printf("size: %lu\n", size);
+  if (size <= 0) {
+    printf("invalid size\n");
     return (NULL);
+  }
   if ((allocated_block = find_free_block(size)) == NULL)
     {
-      if ((allocated_block = extend_memory(size)) == NULL)
+      if ((allocated_block = extend_memory(size)) == NULL) {
+	printf("malloc failed\n");
 	return (NULL);
+      }
     }
   return (allocated_block);
 }
