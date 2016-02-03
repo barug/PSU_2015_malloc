@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Fri Jan 29 14:24:02 2016 Erwan Dupard
-** Last update Wed Feb  3 15:15:35 2016 Erwan Dupard
+** Last update Wed Feb  3 16:34:59 2016 Erwan Dupard
 */
 
 #include "ressources.h"
@@ -20,7 +20,10 @@ static void		fusion_next_block(t_block *currentElem)
 
 t_block			*get_elem_by_ptr(void *ptr)
 {
-  return ((ptr - NODE_SIZE));
+  char			*tmp;
+
+  tmp = ptr;
+  return (ptr = tmp -= NODE_SIZE);
 }
 
 void			free(void *ptr)
@@ -36,6 +39,7 @@ void			free(void *ptr)
 	  currentElem = currentElem->prev;
 	  fusion_next_block(currentElem);
 	}
+      printf("NEXT : %p\n", currentElem->next);
       if (currentElem->next && currentElem->next->free) 
 	fusion_next_block(currentElem);
       if (!currentElem->next) 

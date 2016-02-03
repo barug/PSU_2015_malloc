@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Thu Jan 28 10:25:45 2016 Erwan Dupard
-// Last update Tue Feb  2 14:46:52 2016 Barthelemy Gouby
+// Last update Wed Feb  3 16:36:21 2016 Erwan Dupard
 */
 
 #ifndef RESSOURCES_H_
@@ -74,5 +74,4 @@ extern void		*g_data;
  * Size to jump at block to get data pointer
  */
 # define NODE_SIZE	(32)
-
 #endif /* ! RESSOURCES_H_ */
