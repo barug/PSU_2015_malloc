@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Tue Jan 26 23:51:05 2016 Erwan Dupard
-** Last update Wed Feb  3 17:56:04 2016 Barthelemy Gouby
+** Last update Wed Feb  3 17:57:05 2016 Barthelemy Gouby
 */
 
 #include <unistd.h>
@@ -39,7 +39,7 @@ static void	*find_free_block(size_t size)
     return (NULL);
   while (iterator->next)
     {
-      if (iterator->free && iterator->size >= size)
+      if (iterator->free == 1 && iterator->size >= size)
 	{
 	  iterator->free = 0;
 	  return (iterator->data);
@@ -66,6 +66,5 @@ void		*malloc(size_t size)
 	return (NULL);
       }
     }
-  printf("Malloc(%lu) : %p\n", size, allocated_block);
   return (allocated_block);
 }

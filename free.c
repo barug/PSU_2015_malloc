@@ -1,3 +1,4 @@
+
 /*
 ** free.c for free in /home/dupard_e/rendus/PSU_2015_malloc
 ** 
@@ -5,7 +6,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Fri Jan 29 14:24:02 2016 Erwan Dupard
-** Last update Wed Feb  3 17:56:15 2016 Barthelemy Gouby
+** Last update Wed Feb  3 17:57:13 2016 Barthelemy Gouby
 */
 
 #include "ressources.h"
@@ -25,14 +26,14 @@ t_block			*get_elem_by_ptr(void *ptr)
   char			*tmp;
 
   tmp = ptr;
-  return (ptr = tmp -= NODE_SIZE);
+  tmp -= NODE_SIZE;
+  return ((t_block *)tmp);
 }
 
 void			free(void *ptr)
 {
   t_block		*currentElem;
 
-  printf("FREEING : %p\n", ptr);
   if (ptr != NULL)
     {
       currentElem = get_elem_by_ptr(ptr);
@@ -53,5 +54,4 @@ void			free(void *ptr)
 	  (void)sbrk(-(NODE_SIZE + currentElem->size));
 	}
     }
-  printf("Free OK\n");
 }

@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Thu Jan 28 10:17:31 2016 Erwan Dupard
-** Last update Mon Feb  1 17:38:49 2016 Erwan Dupard
+** Last update Wed Feb  3 17:32:04 2016 Erwan Dupard
 */
 
 #include <stdio.h>
@@ -18,16 +18,16 @@
 int		main()
 {
   char		*str;
-  int		i = 0;
+  int		i = 4;
 
-  while (i < 5)
+  while (i < 50000)
     {
-      if ((str = malloc(sizeof(*str) * (strlen(TEST) + 1))) == NULL)
+      if ((str = malloc(i)) == NULL)
 	return (1);
       str = strcpy(str, TEST);
       printf("str : %s\n", str);
+      free(str);
       ++i;
     }
-  my_memory_dump();
   return (0);
 }
