@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Mon Feb  1 14:44:26 2016 Erwan Dupard
-** Last update Tue Feb  2 18:16:34 2016 Barthelemy Gouby
+** Last update Wed Feb  3 15:15:50 2016 Erwan Dupard
 */
 
 #include "ressources.h"
@@ -20,7 +20,7 @@ static void	*copyBlock(t_block *d, t_block *s)
   while (++i < s->size)
     d->data[i] = s->data[i];
   free(s->data);
-  return (d);
+  return (d->data);
 }
 
 void		*realloc(void *ptr, size_t size)
