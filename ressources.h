@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Thu Jan 28 10:25:45 2016 Erwan Dupard
-// Last update Thu Feb  4 16:50:00 2016 Erwan Dupard
+// Last update Thu Feb  4 17:49:16 2016 Erwan Dupard
 */
 
 #ifndef RESSOURCES_H_
@@ -38,8 +38,6 @@ typedef struct		s_block
  * Size to jump at block to get data pointer
  */
 # define NODE_SIZE	(32)
-
-
 
 /*
  * Malloc implementation
