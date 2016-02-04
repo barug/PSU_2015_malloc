@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Mon Feb  1 17:21:36 2016 Erwan Dupard
-** Last update Wed Feb  3 16:47:17 2016 Erwan Dupard
+** Last update Wed Feb  3 18:33:57 2016 Erwan Dupard
 */
 
 #include "ressources.h"
@@ -14,7 +14,7 @@
 
 t_block			*g_data;
 
-void			display_block_data(t_block *block)
+static void		display_block_data(t_block *block)
 {
   size_t		i = 0;
 
