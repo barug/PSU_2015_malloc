@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Tue Jan 26 23:51:05 2016 Erwan Dupard
-** Last update Thu Feb  4 17:45:54 2016 Erwan Dupard
+** Last update Thu Feb  4 18:38:40 2016 Erwan Dupard
 */
 
 #include <unistd.h>
@@ -21,7 +21,7 @@ void		*extend_memory(size_t size)
   if (sbrk(NODE_SIZE + size) == (void *) -1)
     return (NULL);
   new->size = size;
-  new->free = 0;
+  new->free = STATUS_NFREE;
   new->next = g_data;
   if (g_data)
     g_data->prev = new;
@@ -39,9 +39,13 @@ static void	*find_free_block(size_t size)
     return (NULL);
   while (iterator->next)
     {
-      if (iterator->free == 1 && iterator->size >= size)
+      printf("prev : %p\n", iterator->prev);
+      printf("next : %p\n", iterator->next);
+      printf("size : %lu\n", iterator->size);
+      printf("free : %d\n\n", iterator->free);
+      if (iterator->free == STATUS_FREE && iterator->size >= size)
 	{
-	  iterator->free = 0;
+	  iterator->free = STATUS_NFREE;
 	  return (iterator->data);
 	}
       iterator = iterator->next;
@@ -53,7 +57,6 @@ void		*malloc(size_t size)
 {
   void		*allocated_block;
 
-  (void)find_free_block;
   size = align4(size);
   if (size <= 0)
     return (NULL);

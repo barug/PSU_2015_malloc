@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Thu Jan 28 10:25:45 2016 Erwan Dupard
-// Last update Thu Feb  4 17:49:16 2016 Erwan Dupard
+// Last update Thu Feb  4 18:26:00 2016 Erwan Dupard
 */
 
 #ifndef RESSOURCES_H_
@@ -16,6 +16,9 @@
 
 # define RETURN_SUCCESS (0)
 # define RETURN_FAILURE (1)
+
+# define STATUS_FREE	(1)
+# define STATUS_NFREE	(0)
 
 # define align4(x) (((((x) - 1) >> 2) << 2) + 4)
 

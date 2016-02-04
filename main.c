@@ -20,16 +20,10 @@ int main()
       }
       memset(ptr_tab[i], 0, i);
     }
-    show_alloc_mem();
     for (i = 1; i <= limit; i++) {
       if ((rand() % 2) == 1)
 	free(ptr_tab[i]);
     }
-    /* for (i = 1; i <= limit; i++) { */
-    /*   ptr_tab[i] = realloc(ptr_tab[i], i + 10); */
-    /*   memset(ptr_tab[i], 0, i + 10); */
-    /* } */
   }
-
   return (0);
 }
