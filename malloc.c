@@ -5,21 +5,23 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Tue Jan 26 23:51:05 2016 Erwan Dupard
-** Last update Wed Feb  3 18:13:36 2016 Barthelemy Gouby
+** Last update Thu Feb  4 13:59:14 2016 Barthelemy Gouby
 */
 
 #include <unistd.h>
 #include "ressources.h"
 
-t_block		*g_data;
+t_block		*g_data = NULL;
 
 void		*extend_memory(size_t size)
 {
   t_block	*new;
 
   new = sbrk(0);
-  if (sbrk(NODE_SIZE + size) == (void *) -1)
+  if (sbrk(NODE_SIZE + size) == (void *) -1) {
+    printf("SBRK FAILED!! ABORT!!! ABORT!!!\n");
     return (NULL);
+  }
   new->size = size;
   new->free = 0;
   new->next = g_data;
