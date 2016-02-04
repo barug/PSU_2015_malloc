@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Mon Feb  1 17:21:36 2016 Erwan Dupard
-** Last update Thu Feb  4 16:13:14 2016 Erwan Dupard
+** Last update Thu Feb  4 16:16:33 2016 Erwan Dupard
 */
 
 #include "ressources.h"
@@ -48,6 +48,19 @@ void			my_memory_dump()
     {
       printf("\n\n[^] Block {%p} %lu bytes\n", iterator, iterator->size);
       display_block_data(iterator);
+      iterator = iterator->next;
+    }
+}
+
+void			heap_dump()
+{
+  t_block		*iterator;
+
+  iterator = g_data;
+  printf("Heap start at : %p\n", iterator);
+  while (iterator)
+    {
+      printf("--> node %p\n", iterator);
       iterator = iterator->next;
     }
 }

@@ -6,7 +6,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Fri Jan 29 14:24:02 2016 Erwan Dupard
-** Last update Wed Feb  3 18:24:32 2016 Erwan Dupard
+** Last update Thu Feb  4 17:45:45 2016 Erwan Dupard
 */
 
 #include "ressources.h"
@@ -23,7 +23,9 @@ static void		fusion_next_block(t_block *currentElem)
 
 t_block			*get_elem_by_ptr(void *ptr)
 {
-  return ((t_block *)(ptr - NODE_SIZE));
+  printf("ptr : %p\n", ptr);
+  printf("sous : %p\n", ptr - (char)(NODE_SIZE));
+  return ((t_block *)(ptr - (char)NODE_SIZE));
 }
 
 int			valid_addr(void *p)

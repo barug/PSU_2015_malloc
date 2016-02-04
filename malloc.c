@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Tue Jan 26 23:51:05 2016 Erwan Dupard
-** Last update Thu Feb  4 16:12:58 2016 Erwan Dupard
+** Last update Thu Feb  4 17:45:54 2016 Erwan Dupard
 */
 
 #include <unistd.h>
@@ -53,6 +53,7 @@ void		*malloc(size_t size)
 {
   void		*allocated_block;
 
+  (void)find_free_block;
   size = align4(size);
   if (size <= 0)
     return (NULL);
