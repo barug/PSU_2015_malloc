@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Mon Feb  1 17:21:36 2016 Erwan Dupard
-** Last update Wed Feb  3 18:33:57 2016 Erwan Dupard
+** Last update Thu Feb  4 15:50:18 2016 Erwan Dupard
 */
 
 #include "ressources.h"
@@ -32,7 +32,7 @@ static void		display_block_data(t_block *block)
   i = 0;
   while (i < block->size)
     {
-      printf("%x ", block->data[i]);
+      printf("%x ", block->data[i] > 0 ? block->data[i] : 255);
       if (i % 10 == 0)
 	printf("\n");
       ++i;
