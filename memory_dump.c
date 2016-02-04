@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Mon Feb  1 17:21:36 2016 Erwan Dupard
-** Last update Thu Feb  4 15:50:18 2016 Erwan Dupard
+** Last update Thu Feb  4 16:13:14 2016 Erwan Dupard
 */
 
 #include "ressources.h"
@@ -27,7 +27,6 @@ static void		display_block_data(t_block *block)
       ++i;
     }
   printf("\n");
-
   printf("[+] HEX :\n");
   i = 0;
   while (i < block->size)

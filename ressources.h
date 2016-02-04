@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Thu Jan 28 10:25:45 2016 Erwan Dupard
-// Last update Wed Feb  3 18:26:16 2016 Erwan Dupard
+// Last update Thu Feb  4 16:11:46 2016 Erwan Dupard
 */
 
 #ifndef RESSOURCES_H_
@@ -65,6 +65,9 @@ void			*extend_memory(size_t size);
  */
 t_block			*get_elem_by_ptr(void *ptr);
 
+/*
+ * Dump Memory (HEX && ASCII)
+ */
 void			my_memory_dump();
 
 /*
@@ -76,4 +79,5 @@ extern t_block		*g_data;
  * Size to jump at block to get data pointer
  */
 # define NODE_SIZE	(32)
+
 #endif /* ! RESSOURCES_H_ */
