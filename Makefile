@@ -5,7 +5,7 @@
 ## Login   <dupard_e@epitech.net>
 ## 
 ## Started on  Tue Jan 26 23:48:36 2016 Erwan Dupard
-## Last update Wed Feb  3 17:45:13 2016 Erwan Dupard
+## Last update Thu Feb  4 16:04:56 2016 Barthelemy Gouby
 ##
 
 CC		= gcc
@@ -19,6 +19,7 @@ SRCS		= malloc.c		\
 		  show_alloc_mem.c	\
 		  memory_dump.c		\
 	 	  realloc.c		\
+		  calloc.c		\
 
 OBJS		= $(SRCS:.c=.o)
 
