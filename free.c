@@ -6,7 +6,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Fri Jan 29 14:24:02 2016 Erwan Dupard
-** Last update Fri Feb  5 12:57:57 2016 Barthelemy Gouby
+** Last update Fri Feb  5 13:10:17 2016 Erwan Dupard
 */
 
 #include "ressources.h"
@@ -34,7 +34,6 @@ int			valid_addr(void *p)
       if (p <= sbrk(0) && p >= heap_start)
 	return (p == (get_elem_by_ptr(p))->data);
     }
-  printf("invalid adress: %p\n", p);
   return (0);
 }
 
@@ -42,7 +41,7 @@ void			free(void *ptr)
 {
   t_block		*currentElem;
 
-  if (ptr != NULL && valid_addr(ptr))
+  if (ptr != NULL && valid_addr(ptr) && 1==0)
     {
       currentElem = get_elem_by_ptr(ptr);
       currentElem->free = STATUS_FREE;

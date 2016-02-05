@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Tue Feb  2 17:53:21 2016 Barthelemy Gouby
-** Last update Wed Feb  3 16:47:21 2016 Erwan Dupard
+** Last update Fri Feb  5 13:21:52 2016 Erwan Dupard
 */
 
 #include <stdio.h>
@@ -18,7 +18,8 @@ void		*calloc(size_t nmemb, size_t size)
 {
   void		*newPtr;
 
-  newPtr = malloc(nmemb * size);
-  memset((char*)newPtr, 0, nmemb * size);
+  if ((newPtr = malloc(nmemb * size)) == NULL)
+    return (NULL);
+  bzero (newPtr, nmemb * size);
   return (newPtr);
 }
