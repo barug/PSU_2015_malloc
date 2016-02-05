@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Thu Jan 28 10:25:45 2016 Erwan Dupard
-// Last update Wed Feb  3 18:26:16 2016 Erwan Dupard
+// Last update Fri Feb  5 12:44:05 2016 Barthelemy Gouby
 */
 
 #ifndef RESSOURCES_H_
@@ -71,6 +71,7 @@ void			my_memory_dump();
  * Heap Linked list ((META-DATA) DATA ) ---> ((META-DATA) DATA ) ---> NIL
  */
 extern t_block		*g_data;
+extern void		*heap_start;
 
 /*
  * Size to jump at block to get data pointer

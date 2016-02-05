@@ -5,21 +5,31 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Tue Jan 26 23:51:05 2016 Erwan Dupard
-** Last update Thu Feb  4 16:07:01 2016 Erwan Dupard
+** Last update Fri Feb  5 12:43:25 2016 Barthelemy Gouby
 */
 
+#include <errno.h>
 #include <unistd.h>
 #include "ressources.h"
 
+void		*heap_start = NULL;
 t_block		*g_data = NULL;
 
 void		*extend_memory(size_t size)
 {
   t_block	*new;
 
-  new = sbrk(0);
+  if ((new = sbrk(0)) == (void*) -1) {
+    printf("THIS SBRK FAILED!! NEW IS INVALID!! WTF?!\n");
+    perror(NULL);
+    return (NULL);
+  }
+  if (g_data == NULL)
+    heap_start = new;
   if (sbrk(NODE_SIZE + size) == (void *) -1) {
     printf("SBRK FAILED!! ABORT!!! ABORT!!!\n");
+    printf("size demanded at failed call: %lu\n", NODE_SIZE + size);
+    perror(NULL);
     return (NULL);
   }
   new->size = size;
@@ -39,7 +49,7 @@ static void	*find_free_block(size_t size)
   iterator = g_data;
   if (iterator == NULL)
     return (NULL);
-  while (iterator->next)
+  while (iterator)
     {
       if (iterator->free == 1 && iterator->size >= size)
 	{

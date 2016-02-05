@@ -6,11 +6,12 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Fri Jan 29 14:24:02 2016 Erwan Dupard
-** Last update Wed Feb  3 18:24:32 2016 Erwan Dupard
+** Last update Fri Feb  5 12:54:35 2016 Barthelemy Gouby
 */
 
 #include "ressources.h"
 
+void			*heap_start;
 t_block			*g_data;
 
 static void		fusion_next_block(t_block *currentElem)
@@ -30,9 +31,10 @@ int			valid_addr(void *p)
 {
   if (g_data)
     {
-      if (p > (void *)g_data && p < sbrk(0))
+      if (p <= sbrk(0) && p >= heap_start)
 	return (p == (get_elem_by_ptr(p))->data);
     }
+  printf("invalid adress: %p\n", p);
   return (0);
 }
 
@@ -51,16 +53,16 @@ void			free(void *ptr)
       	}
       if (currentElem->next && currentElem->next->free)
       	fusion_next_block(currentElem);
-      if (!currentElem->prev) 
-	{
-	  if (currentElem->next)
-	    {
-	      currentElem->next->prev = NULL;
-	      g_data = currentElem->next;
-	    }
-	  else 
-	    g_data = NULL;
-	  (void)sbrk(-(NODE_SIZE + currentElem->size));
-	}
+      /* if (!currentElem->prev)  */
+      /* 	{ */
+      /* 	  if (currentElem->next) */
+      /* 	    { */
+      /* 	      currentElem->next->prev = NULL; */
+      /* 	      g_data = currentElem->next; */
+      /* 	    } */
+      /* 	  else  */
+      /* 	    g_data = NULL; */
+      /* 	  (void)sbrk(-(NODE_SIZE + currentElem->size)); */
+      /* 	} */
     }
 }
