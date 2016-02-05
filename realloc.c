@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Mon Feb  1 14:44:26 2016 Erwan Dupard
-** Last update Thu Feb  4 16:07:09 2016 Erwan Dupard
+** Last update Fri Feb  5 12:53:30 2016 Erwan Dupard
 */
 
 #include "ressources.h"
@@ -40,9 +40,9 @@ void		*realloc(void *ptr, size_t size)
   iterator = g_data;
   while (iterator)
     {
-      if (iterator->size >= size && iterator->free == 1)
+      if (iterator->size >= size && iterator->free == STATUS_FREE)
 	{
-	  iterator->free = 0;
+	  iterator->free = STATUS_NFREE;
 	  return (copyBlock(iterator, original));
 	}
       iterator = iterator->next;

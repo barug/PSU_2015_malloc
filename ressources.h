@@ -5,7 +5,11 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Thu Jan 28 10:25:45 2016 Erwan Dupard
+<<<<<<< HEAD
 // Last update Fri Feb  5 12:44:05 2016 Barthelemy Gouby
+=======
+// Last update Thu Feb  4 18:26:00 2016 Erwan Dupard
+>>>>>>> bb8843987d54e7948b7a04910b746c5c1f361ec2
 */
 
 #ifndef RESSOURCES_H_
@@ -17,6 +21,8 @@
 # define RETURN_SUCCESS (0)
 # define RETURN_FAILURE (1)
 
+# define STATUS_FREE	(1)
+# define STATUS_NFREE	(0)
 
 # define align4(x) (((((x) - 1) >> 2) << 2) + 4)
 
@@ -34,6 +40,11 @@ typedef struct		s_block
   struct s_block	*prev;	 /* Prev memory block */
   char			data[1];/* Pointer on s_block + sizeof(s_block) to have data pointer */
 }			t_block;
+
+/*
+ * Size to jump at block to get data pointer
+ */
+# define NODE_SIZE	(32)
 
 /*
  * Malloc implementation
@@ -65,16 +76,15 @@ void			*extend_memory(size_t size);
  */
 t_block			*get_elem_by_ptr(void *ptr);
 
+/*
+ * Dump Memory (HEX && ASCII)
+ */
 void			my_memory_dump();
-
+void			heap_dump();
 /*
  * Heap Linked list ((META-DATA) DATA ) ---> ((META-DATA) DATA ) ---> NIL
  */
 extern t_block		*g_data;
 extern void		*heap_start;
 
-/*
- * Size to jump at block to get data pointer
- */
-# define NODE_SIZE	(32)
 #endif /* ! RESSOURCES_H_ */

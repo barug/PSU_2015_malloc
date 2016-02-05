@@ -6,7 +6,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Fri Jan 29 14:24:02 2016 Erwan Dupard
-** Last update Fri Feb  5 12:54:35 2016 Barthelemy Gouby
+** Last update Fri Feb  5 12:57:57 2016 Barthelemy Gouby
 */
 
 #include "ressources.h"
@@ -24,7 +24,7 @@ static void		fusion_next_block(t_block *currentElem)
 
 t_block			*get_elem_by_ptr(void *ptr)
 {
-  return ((t_block *)(ptr - NODE_SIZE));
+  return ((t_block *)(ptr - (char)NODE_SIZE));
 }
 
 int			valid_addr(void *p)
@@ -45,13 +45,13 @@ void			free(void *ptr)
   if (ptr != NULL && valid_addr(ptr))
     {
       currentElem = get_elem_by_ptr(ptr);
-      currentElem->free = 1;
-      if (currentElem->prev && currentElem->prev->free)
+      currentElem->free = STATUS_FREE;
+      if (currentElem->prev && currentElem->prev->free == STATUS_FREE)
       	{
       	  currentElem = currentElem->prev;
       	  fusion_next_block(currentElem);
       	}
-      if (currentElem->next && currentElem->next->free)
+      if (currentElem->next && currentElem->next->free == STATUS_FREE)
       	fusion_next_block(currentElem);
       /* if (!currentElem->prev)  */
       /* 	{ */
