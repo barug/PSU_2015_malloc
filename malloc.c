@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Tue Jan 26 23:51:05 2016 Erwan Dupard
-** Last update Thu Feb  4 18:38:40 2016 Erwan Dupard
+** Last update Fri Feb  5 12:54:46 2016 Erwan Dupard
 */
 
 #include <unistd.h>
@@ -39,10 +39,13 @@ static void	*find_free_block(size_t size)
     return (NULL);
   while (iterator->next)
     {
-      printf("prev : %p\n", iterator->prev);
-      printf("next : %p\n", iterator->next);
-      printf("size : %lu\n", iterator->size);
-      printf("free : %d\n\n", iterator->free);
+      if (iterator->next == (void *)0x1)
+	{
+	  printf("prev : %p\n", iterator->prev);
+	  printf("next : %p\n", iterator->next);
+	  printf("size : %lu\n", iterator->size);
+	  printf("free : %d\n\n", iterator->free);
+	}
       if (iterator->free == STATUS_FREE && iterator->size >= size)
 	{
 	  iterator->free = STATUS_NFREE;
@@ -60,6 +63,7 @@ void		*malloc(size_t size)
   size = align4(size);
   if (size <= 0)
     return (NULL);
+  (void)find_free_block;
   if ((allocated_block = find_free_block(size)) == NULL)
     {
       if ((allocated_block = extend_memory(size)) == NULL)
