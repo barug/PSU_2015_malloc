@@ -6,7 +6,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Fri Jan 29 14:24:02 2016 Erwan Dupard
-** Last update Fri Feb  5 16:48:25 2016 Erwan Dupard
+** Last update Fri Feb  5 16:54:16 2016 Erwan Dupard
 */
 
 #include "ressources.h"
@@ -20,7 +20,6 @@ static void		fusion_next_block(t_block *currentElem)
   currentElem->next = currentElem->next->next;
   if (currentElem->next)
     currentElem->next->prev = currentElem;
-  dump_node(currentElem);
 
 }
 
