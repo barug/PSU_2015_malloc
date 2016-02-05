@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Mon Feb  1 17:21:36 2016 Erwan Dupard
-** Last update Thu Feb  4 18:13:24 2016 Erwan Dupard
+** Last update Fri Feb  5 16:29:13 2016 Erwan Dupard
 */
 
 #include "ressources.h"
@@ -13,6 +13,16 @@
 # define IS_PRINTABLE(c) ((c >= ' ' && c <= '~'))
 
 t_block			*g_data;
+
+void			dump_node(t_block *node)
+{
+  printf("node : %p\n", node);
+  printf("node->next : %p\n", node->next);
+  printf("node->prev : %p\n", node->prev);
+  printf("node->size : %lu\n", node->size);
+  printf("node->free : %d\n", node->free);
+  printf("node->data : %p\n\n", node->data);
+}
 
 static void		display_block_data(t_block *block)
 {

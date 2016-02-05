@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Tue Jan 26 23:51:05 2016 Erwan Dupard
-** Last update Fri Feb  5 16:09:29 2016 Erwan Dupard
+** Last update Fri Feb  5 16:39:28 2016 Erwan Dupard
 */
 
 #include <errno.h>
@@ -61,7 +61,6 @@ void		*malloc(size_t size)
   size = align4(size);
   if (size <= 0)
     return (NULL);
-  (void)find_free_block;
   if ((allocated_block = find_free_block(size)) == NULL)
     {
       if ((allocated_block = my_extend_memory(size)) == NULL)
