@@ -6,13 +6,13 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Fri Jan 29 14:24:02 2016 Erwan Dupard
-** Last update Fri Feb  5 13:10:17 2016 Erwan Dupard
+** Last update Fri Feb  5 16:04:28 2016 Erwan Dupard
 */
 
 #include "ressources.h"
 
-void			*heap_start;
-t_block			*g_data;
+extern void		*heap_start;
+extern t_block		*g_data;
 
 static void		fusion_next_block(t_block *currentElem)
 {

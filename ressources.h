@@ -5,11 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Thu Jan 28 10:25:45 2016 Erwan Dupard
-<<<<<<< HEAD
-// Last update Fri Feb  5 12:44:05 2016 Barthelemy Gouby
-=======
-// Last update Thu Feb  4 18:26:00 2016 Erwan Dupard
->>>>>>> bb8843987d54e7948b7a04910b746c5c1f361ec2
+// Last update Fri Feb  5 16:05:35 2016 Erwan Dupard
 */
 
 #ifndef RESSOURCES_H_
@@ -69,7 +65,7 @@ void			show_alloc_mem();
 /*
  * Extend memory (Heap)
  */
-void			*extend_memory(size_t size);
+void			*my_extend_memory(size_t size);
 
 /*
  * Retreive Block by data pointer
@@ -84,7 +80,7 @@ void			heap_dump();
 /*
  * Heap Linked list ((META-DATA) DATA ) ---> ((META-DATA) DATA ) ---> NIL
  */
-extern t_block		*g_data;
-extern void		*heap_start;
+t_block			*g_data;
+void			*heap_start;
 
 #endif /* ! RESSOURCES_H_ */

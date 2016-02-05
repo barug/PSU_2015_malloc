@@ -5,12 +5,12 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Mon Feb  1 14:44:26 2016 Erwan Dupard
-** Last update Fri Feb  5 12:53:30 2016 Erwan Dupard
+** Last update Fri Feb  5 16:10:28 2016 Erwan Dupard
 */
 
 #include "ressources.h"
 
-t_block		*g_data;
+extern t_block		*g_data;
 
 static void	*copyBlock(t_block *d, t_block *s)
 {
@@ -47,6 +47,8 @@ void		*realloc(void *ptr, size_t size)
 	}
       iterator = iterator->next;
     }
-  newBlock = extend_memory(size);
+  if ((newBlock = my_extend_memory(size)) == NULL)
+    return (NULL);
+  newBlock = get_elem_by_ptr(newBlock);
   return (copyBlock(newBlock, original));
 }

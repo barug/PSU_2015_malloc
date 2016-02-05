@@ -5,7 +5,7 @@
 ## Login   <dupard_e@epitech.net>
 ## 
 ## Started on  Tue Jan 26 23:48:36 2016 Erwan Dupard
-## Last update Thu Feb  4 17:59:59 2016 Erwan Dupard
+## Last update Fri Feb  5 14:50:23 2016 Erwan Dupard
 ##
 
 CC		= gcc
@@ -17,7 +17,6 @@ NAME		= libmy_malloc.so
 SRCS		= malloc.c		\
 		  free.c		\
 		  show_alloc_mem.c	\
-		  memory_dump.c		\
 	 	  realloc.c		\
 		  calloc.c		\
 

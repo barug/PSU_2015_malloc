@@ -5,17 +5,17 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Tue Jan 26 23:51:05 2016 Erwan Dupard
-** Last update Fri Feb  5 13:27:03 2016 Erwan Dupard
+** Last update Fri Feb  5 16:09:29 2016 Erwan Dupard
 */
 
 #include <errno.h>
 #include <unistd.h>
 #include "ressources.h"
 
-void		*heap_start = NULL;
-t_block		*g_data = NULL;
+extern void	*heap_start;
+extern t_block	*g_data;
 
-void		*extend_memory(size_t size)
+void		*my_extend_memory(size_t size)
 {
   t_block	*new;
 
@@ -64,7 +64,7 @@ void		*malloc(size_t size)
   (void)find_free_block;
   if ((allocated_block = find_free_block(size)) == NULL)
     {
-      if ((allocated_block = extend_memory(size)) == NULL)
+      if ((allocated_block = my_extend_memory(size)) == NULL)
 	return (NULL);
     }
   return (allocated_block);
