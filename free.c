@@ -6,7 +6,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Fri Jan 29 14:24:02 2016 Erwan Dupard
-** Last update Sun Feb  7 01:09:33 2016 Erwan Dupard
+** Last update Sun Feb  7 01:24:44 2016 Erwan Dupard
 */
 
 #include "ressources.h"
@@ -32,6 +32,7 @@ void			free(void *ptr)
     {
       currentElem = get_elem_by_ptr(ptr);
       currentElem->free = 1;
+      //TODO: fusion barthelemy , i trust u boy !!
       if (!currentElem->next)
 	{
 	  if (currentElem->prev)
