@@ -6,22 +6,13 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Fri Jan 29 14:24:02 2016 Erwan Dupard
-** Last update Fri Feb  5 16:54:16 2016 Erwan Dupard
+** Last update Sun Feb  7 01:09:33 2016 Erwan Dupard
 */
 
 #include "ressources.h"
 
 extern void		*heap_start;
 extern t_block		*g_data;
-
-static void		fusion_next_block(t_block *currentElem)
-{
-  currentElem->size += NODE_SIZE + currentElem->next->size;
-  currentElem->next = currentElem->next->next;
-  if (currentElem->next)
-    currentElem->next->prev = currentElem;
-
-}
 
 t_block			*get_elem_by_ptr(void *ptr)
 {
@@ -30,28 +21,24 @@ t_block			*get_elem_by_ptr(void *ptr)
 
 int			valid_addr(void *p)
 {
-  if (g_data)
-    {
-      if (p <= sbrk(0) && p >= heap_start)
-	return (p == (get_elem_by_ptr(p))->data);
-    }
-  return (0);
+  return (p != NULL && p <= sbrk(0));
 }
 
 void			free(void *ptr)
 {
   t_block		*currentElem;
 
-  if (ptr != NULL && valid_addr(ptr))
+  if (valid_addr(ptr))
     {
       currentElem = get_elem_by_ptr(ptr);
-      currentElem->free = STATUS_FREE;
-      if (currentElem->prev && currentElem->prev->free == STATUS_FREE)
-      	{
-      	  currentElem = currentElem->prev;
-      	  fusion_next_block(currentElem);
-      	}
-      if (currentElem->next && currentElem->next->free == STATUS_FREE)
-      	fusion_next_block(currentElem);
+      currentElem->free = 1;
+      if (!currentElem->next)
+	{
+	  if (currentElem->prev)
+	    currentElem->prev->next = NULL;
+	  else
+	    g_data = NULL;
+	  brk(currentElem);
+	}
     }
 }

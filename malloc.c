@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Tue Jan 26 23:51:05 2016 Erwan Dupard
-** Last update Fri Feb  5 16:39:28 2016 Erwan Dupard
+** Last update Sun Feb  7 01:03:29 2016 Erwan Dupard
 */
 
 #include <errno.h>
@@ -18,6 +18,7 @@ extern t_block	*g_data;
 void		*my_extend_memory(size_t size)
 {
   t_block	*new;
+  t_block	*iterator;
 
   if ((new = sbrk(0)) == (void*) -1)
     return (NULL);
@@ -27,11 +28,18 @@ void		*my_extend_memory(size_t size)
     return (NULL);
   new->size = size;
   new->free = STATUS_NFREE;
-  new->next = g_data;
-  if (g_data)
-    g_data->prev = new;
-  new->prev = NULL;
-  g_data = new;
+  new->next = NULL;
+  if (g_data == NULL)
+    {
+      g_data = new;
+      new->prev = NULL;
+      return (new->data);
+    }
+  iterator = g_data;
+  while (iterator->next)
+    iterator = iterator->next;
+  iterator->next = new;
+  new->prev = iterator;
   return (new->data);
 }
 
