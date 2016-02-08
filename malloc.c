@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Tue Jan 26 23:51:05 2016 Erwan Dupard
-** Last update Mon Feb  8 14:57:53 2016 Erwan Dupard
+** Last update Mon Feb  8 15:02:20 2016 Erwan Dupard
 */
 
 #include <errno.h>
@@ -13,11 +13,21 @@
 #include "ressources.h"
 
 extern t_block	*g_data;
+extern t_block	*g_last;
+
+t_block		*get_last()
+{
+  t_block	*iterator;
+
+  iterator = g_data;
+  while (iterator->next)
+    iterator = iterator->next;
+  return (iterator);
+}
 
 void		*my_extend_memory(size_t size)
 {
   t_block	*new;
-  t_block	*iterator;
 
   if ((new = sbrk(0)) == (void *) -1)
     return (NULL);
@@ -32,11 +42,10 @@ void		*my_extend_memory(size_t size)
       new->prev = NULL;
       return (new->data);
     }
-  iterator = g_data;
-  while (iterator->next)
-    iterator = iterator->next;
-  iterator->next = new;
-  new->prev = iterator;
+  if (!g_last)
+    g_last = get_last();
+  g_last->next = new;
+  new->prev = g_last;
   return (new->data);
 }
 
