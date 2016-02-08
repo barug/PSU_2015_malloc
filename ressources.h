@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Thu Jan 28 10:25:45 2016 Erwan Dupard
-// Last update Mon Feb  8 14:01:56 2016 Erwan Dupard
+// Last update Mon Feb  8 14:55:04 2016 Erwan Dupard
 */
 
 #ifndef RESSOURCES_H_
@@ -77,6 +77,11 @@ t_block			*get_elem_by_ptr(void *ptr);
  * Fusion prev block
  */
 t_block			*fusion_prev_block(t_block *currentElem);
+
+/*
+ * Get the head end pointer
+ */
+void			*get_heap_end();
 
 /*
  * Dump Memory (HEX && ASCII)

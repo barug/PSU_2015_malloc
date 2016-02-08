@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Tue Jan 26 23:51:05 2016 Erwan Dupard
-** Last update Mon Feb  8 14:09:29 2016 Erwan Dupard
+** Last update Mon Feb  8 14:57:12 2016 Erwan Dupard
 */
 
 #include <errno.h>
@@ -20,7 +20,7 @@ void		*my_extend_memory(size_t size)
   t_block	*new;
   t_block	*iterator;
 
-  if ((new = sbrk(0)) == (void*) -1)
+  if ((new = sbrk(0)) == (void *) -1)
     return (NULL);
   if (g_data == NULL)
     heap_start = new;
@@ -74,6 +74,5 @@ void		*malloc(size_t size)
       if ((allocated_block = my_extend_memory(size)) == NULL)
 	return (NULL);
     }
-  show_alloc_mem();
   return (allocated_block);
 }
