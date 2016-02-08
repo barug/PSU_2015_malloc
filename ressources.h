@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Thu Jan 28 10:25:45 2016 Erwan Dupard
-** Last update Sun Feb  7 01:36:28 2016 Erwan Dupard
+// Last update Mon Feb  8 14:01:56 2016 Erwan Dupard
 */
 
 #ifndef RESSOURCES_H_
@@ -71,6 +71,12 @@ void			*my_extend_memory(size_t size);
  * Retreive Block by data pointer
  */
 t_block			*get_elem_by_ptr(void *ptr);
+
+
+/*
+ * Fusion prev block
+ */
+t_block			*fusion_prev_block(t_block *currentElem);
 
 /*
  * Dump Memory (HEX && ASCII)

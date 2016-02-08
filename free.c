@@ -1,3 +1,4 @@
+
 /*
 ** free.c for free in /home/dupard_e/rendus/PSU_2015_malloc
 ** 
@@ -5,13 +6,28 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Fri Jan 29 14:24:02 2016 Erwan Dupard
-** Last update Sun Feb  7 01:36:09 2016 Erwan Dupard
+** Last update Mon Feb  8 14:02:02 2016 Erwan Dupard
 */
 
 #include "ressources.h"
 
 extern void		*heap_start;
 extern t_block		*g_data;
+
+t_block			*fusion_prev_block(t_block *currentElem)
+{
+  t_block		*currentPrev;
+
+  currentPrev = currentElem->prev;
+  if (currentPrev && currentPrev->free == STATUS_FREE)
+    {
+      currentPrev->size += currentElem->size + NODE_SIZE;
+      currentPrev->next = currentElem->next;
+      if (currentElem->next)
+	currentElem->next->prev = currentPrev;
+    }
+  return (currentPrev);
+}
 
 t_block			*get_elem_by_ptr(void *ptr)
 {
@@ -31,8 +47,8 @@ void			free(void *ptr)
     {
       currentElem = get_elem_by_ptr(ptr);
       currentElem->free = 1;
-      //TODO: fusion barthelemy , i trust u boy !!
-      if (!currentElem->next)
+      currentElem = fusion_prev_block(currentElem);
+      if (currentElem && !currentElem->next)
 	{
 	  if (currentElem->prev)
 	    currentElem->prev->next = NULL;
