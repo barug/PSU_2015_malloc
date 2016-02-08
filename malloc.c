@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Tue Jan 26 23:51:05 2016 Erwan Dupard
-** Last update Mon Feb  8 15:05:41 2016 Erwan Dupard
+** Last update Mon Feb  8 18:41:58 2016 Erwan Dupard
 */
 
 #include <errno.h>
@@ -42,10 +42,10 @@ void		*my_extend_memory(size_t size)
       new->prev = NULL;
       return (new->data);
     }
-  if (!g_last)
+  if (!g_last || g_last->next != NULL)
     g_last = get_last();
-  g_last->next = new;
-  new->prev = g_last;
+  g_data->next = new;
+  new->prev = g_data;
   return (new->data);
 }
 
@@ -53,9 +53,11 @@ static void	*find_free_block(size_t size)
 {
   t_block	*iterator;
 
-  iterator = g_data;
-  if (iterator == NULL)
+  if (g_data == NULL)
     return (NULL);
+  if (g_last == NULL)
+    g_last = get_last();
+  iterator = g_last;
   while (iterator)
     {
       if (iterator->free == STATUS_FREE && iterator->size >= size)
@@ -63,7 +65,7 @@ static void	*find_free_block(size_t size)
 	  iterator->free = STATUS_NFREE;
 	  return (iterator->data);
 	}
-      iterator = iterator->next;
+      iterator = iterator->prev;
     }
   return (NULL);
 }
