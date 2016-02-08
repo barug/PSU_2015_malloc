@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Thu Jan 28 10:25:45 2016 Erwan Dupard
-// Last update Mon Feb  8 14:55:04 2016 Erwan Dupard
+// Last update Mon Feb  8 14:57:48 2016 Erwan Dupard
 */
 
 #ifndef RESSOURCES_H_
@@ -93,6 +93,5 @@ void			dump_node(t_block *);
  * Heap Linked list ((META-DATA) DATA ) ---> ((META-DATA) DATA ) ---> NIL
  */
 t_block			*g_data;
-void			*heap_start;
 
 #endif /* ! RESSOURCES_H_ */

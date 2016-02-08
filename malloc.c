@@ -5,14 +5,13 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Tue Jan 26 23:51:05 2016 Erwan Dupard
-** Last update Mon Feb  8 14:57:12 2016 Erwan Dupard
+** Last update Mon Feb  8 14:57:53 2016 Erwan Dupard
 */
 
 #include <errno.h>
 #include <unistd.h>
 #include "ressources.h"
 
-extern void	*heap_start;
 extern t_block	*g_data;
 
 void		*my_extend_memory(size_t size)
@@ -22,8 +21,6 @@ void		*my_extend_memory(size_t size)
 
   if ((new = sbrk(0)) == (void *) -1)
     return (NULL);
-  if (g_data == NULL)
-    heap_start = new;
   if (sbrk(NODE_SIZE + size) == (void *) -1)
     return (NULL);
   new->size = size;

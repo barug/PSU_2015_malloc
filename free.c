@@ -5,12 +5,11 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Fri Jan 29 14:24:02 2016 Erwan Dupard
-** Last update Mon Feb  8 14:16:37 2016 Erwan Dupard
+** Last update Mon Feb  8 14:58:08 2016 Erwan Dupard
 */
 
 #include "ressources.h"
 
-extern void		*heap_start;
 extern t_block		*g_data;
 
 t_block			*fusion_prev_block(t_block *currentElem)
