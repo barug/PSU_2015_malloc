@@ -5,7 +5,7 @@
 ## Login   <dupard_e@epitech.net>
 ## 
 ## Started on  Tue Jan 26 23:48:36 2016 Erwan Dupard
-## Last update Fri Feb  5 16:27:43 2016 Erwan Dupard
+## Last update Tue Feb  9 13:43:45 2016 Erwan Dupard
 ##
 
 CC		= gcc
@@ -25,7 +25,7 @@ OBJS		= $(SRCS:.c=.o)
 
 CFLAGS		+= -g3 -fPIC -Wall -Werror -Wextra
 
-LDFLAGS		+= -shared
+LDFLAGS		+= -shared -lpthread
 
 all: $(OBJS)
 	$(CC) -o $(NAME) $(OBJS) $(CFLAGS) $(LDFLAGS)

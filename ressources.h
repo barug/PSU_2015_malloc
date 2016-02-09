@@ -5,12 +5,13 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Thu Jan 28 10:25:45 2016 Erwan Dupard
-// Last update Tue Feb  9 13:10:20 2016 Erwan Dupard
+// Last update Tue Feb  9 14:08:15 2016 Erwan Dupard
 */
 
 #ifndef RESSOURCES_H_
 # define RESSOURCES_H_
 
+# include <pthread.h>
 # include <stdio.h>
 # include <unistd.h>
 
@@ -89,9 +90,12 @@ void			*get_heap_end();
 void			my_memory_dump();
 void			heap_dump();
 void			dump_node(t_block *);
+
 /*
  * Heap Linked list ((META-DATA) DATA ) ---> ((META-DATA) DATA ) ---> NIL
  */
 t_block			*g_data;
+pthread_mutex_t		g_mutex;
+char			g_mutex_initialized;
 
 #endif /* ! RESSOURCES_H_ */

@@ -5,16 +5,18 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Tue Jan 26 23:51:05 2016 Erwan Dupard
-** Last update Tue Feb  9 13:10:56 2016 Erwan Dupard
+** Last update Tue Feb  9 14:13:15 2016 Erwan Dupard
 */
 
 #include <errno.h>
 #include <unistd.h>
 #include "ressources.h"
 
-extern t_block	*g_data;
+extern t_block		*g_data;
+extern pthread_mutex_t	g_mutex;
+extern char		g_mutex_initialized;
 
-void		*my_extend_memory(size_t size)
+void			*my_extend_memory(size_t size)
 {
   t_block	*new;
   t_block	*iterator;
@@ -40,7 +42,7 @@ void		*my_extend_memory(size_t size)
   return (new->data);
 }
 
-static void	*find_free_block(size_t size)
+static void		*find_free_block(size_t size)
 {
   t_block	*iterator;
 
@@ -59,14 +61,24 @@ static void	*find_free_block(size_t size)
   return (NULL);
 }
 
-void		*malloc(size_t size)
+void			*malloc(size_t size)
 {
   void		*allocated_block;
 
+  if (g_mutex_initialized == 0)
+    {
+      g_mutex_initialized = 1;
+      g_mutex = (pthread_mutex_t)PTHREAD_MUTEX_INITIALIZER;
+    }
   size = align4(size);
   if (size <= 0)
     return (NULL);
+  pthread_mutex_lock(&g_mutex);
   if ((allocated_block = find_free_block(size)) == NULL)
-    return (my_extend_memory(size));
+    {
+      pthread_mutex_unlock(&g_mutex);
+      return (my_extend_memory(size));
+    }
+  pthread_mutex_unlock(&g_mutex);
   return (allocated_block);
 }

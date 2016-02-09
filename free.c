@@ -5,12 +5,13 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Fri Jan 29 14:24:02 2016 Erwan Dupard
-** Last update Mon Feb  8 14:58:08 2016 Erwan Dupard
+** Last update Tue Feb  9 14:14:07 2016 Erwan Dupard
 */
 
 #include "ressources.h"
 
 extern t_block		*g_data;
+extern pthread_mutex_t	g_mutex;
 
 t_block			*fusion_prev_block(t_block *currentElem)
 {
@@ -40,7 +41,8 @@ int			valid_addr(void *p)
 void			free(void *ptr)
 {
   t_block		*currentElem;
-
+  
+  pthread_mutex_lock(&g_mutex);
   if (valid_addr(ptr))
     {
       currentElem = get_elem_by_ptr(ptr);
@@ -57,4 +59,5 @@ void			free(void *ptr)
 	  brk(currentElem);
 	}
     }
+  pthread_mutex_unlock(&g_mutex);
 }
