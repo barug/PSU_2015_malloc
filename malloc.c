@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Tue Jan 26 23:51:05 2016 Erwan Dupard
-** Last update Mon Feb  8 18:41:58 2016 Erwan Dupard
+** Last update Tue Feb  9 13:10:56 2016 Erwan Dupard
 */
 
 #include <errno.h>
@@ -13,21 +13,11 @@
 #include "ressources.h"
 
 extern t_block	*g_data;
-extern t_block	*g_last;
-
-t_block		*get_last()
-{
-  t_block	*iterator;
-
-  iterator = g_data;
-  while (iterator->next)
-    iterator = iterator->next;
-  return (iterator);
-}
 
 void		*my_extend_memory(size_t size)
 {
   t_block	*new;
+  t_block	*iterator;
 
   if ((new = sbrk(0)) == (void *) -1)
     return (NULL);
@@ -42,10 +32,11 @@ void		*my_extend_memory(size_t size)
       new->prev = NULL;
       return (new->data);
     }
-  if (!g_last || g_last->next != NULL)
-    g_last = get_last();
-  g_data->next = new;
-  new->prev = g_data;
+  iterator = g_data;
+  while (iterator->next)
+    iterator = iterator->next;
+  iterator->next = new;
+  new->prev = iterator;
   return (new->data);
 }
 
@@ -55,9 +46,7 @@ static void	*find_free_block(size_t size)
 
   if (g_data == NULL)
     return (NULL);
-  if (g_last == NULL)
-    g_last = get_last();
-  iterator = g_last;
+  iterator = g_data;
   while (iterator)
     {
       if (iterator->free == STATUS_FREE && iterator->size >= size)
@@ -65,7 +54,7 @@ static void	*find_free_block(size_t size)
 	  iterator->free = STATUS_NFREE;
 	  return (iterator->data);
 	}
-      iterator = iterator->prev;
+      iterator = iterator->next;
     }
   return (NULL);
 }
@@ -78,9 +67,6 @@ void		*malloc(size_t size)
   if (size <= 0)
     return (NULL);
   if ((allocated_block = find_free_block(size)) == NULL)
-    {
-      if ((allocated_block = my_extend_memory(size)) == NULL)
-	return (NULL);
-    }
+    return (my_extend_memory(size));
   return (allocated_block);
 }
