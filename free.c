@@ -5,13 +5,14 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Fri Jan 29 14:24:02 2016 Erwan Dupard
-** Last update Tue Feb  9 14:14:07 2016 Erwan Dupard
+** Last update Tue Feb  9 19:07:46 2016 Barthelemy Gouby
 */
 
 #include "ressources.h"
 
 extern t_block		*g_data;
 extern pthread_mutex_t	g_mutex;
+extern size_t		g_page_left;
 
 t_block			*fusion_prev_block(t_block *currentElem)
 {
@@ -38,6 +39,7 @@ int			valid_addr(void *p)
   return (p != NULL && p <= sbrk(0));
 }
 
+
 void			free(void *ptr)
 {
   t_block		*currentElem;
@@ -50,14 +52,19 @@ void			free(void *ptr)
       currentElem = fusion_prev_block(currentElem);
       if (currentElem && currentElem->next && currentElem->next->free)
 	currentElem = fusion_prev_block(currentElem->next);
-      if (currentElem && !currentElem->next)
-	{
-	  if (currentElem->prev)
-	    currentElem->prev->next = NULL;
-	  else
-	    g_data = NULL;
-	  brk(currentElem);
-	}
+      /* if (currentElem && !currentElem->next) */
+      /* 	{ */
+      /* 	  /\* printf("REDUCING AVAILABLE MEMORY OF:%lu\n", currentElem->size); *\/ */
+      /* 	  if (currentElem->prev) */
+      /* 	    { */
+      /* 	      g_last = currentElem->prev; */
+      /* 	      currentElem->prev->next = NULL; */
+      /* 	    } */
+      /* 	  else */
+      /* 	    g_data = NULL; */
+      /* 	  g_page_left += currentElem->size; */
+      /* 	  /\* brk(currentElem); *\/ */
+      /* 	} */
     }
   pthread_mutex_unlock(&g_mutex);
 }

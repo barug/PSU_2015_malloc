@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Mon Feb  1 14:44:26 2016 Erwan Dupard
-** Last update Fri Feb  5 16:33:30 2016 Erwan Dupard
+** Last update Wed Feb 10 16:34:41 2016 Barthelemy Gouby
 */
 
 #include "ressources.h"
@@ -32,7 +32,9 @@ void		*realloc(void *ptr, size_t size)
   t_block	*original;
   t_block	*newBlock;
 
-  if (ptr == NULL)
+  if (ptr == NULL && size == 0)
+    free (ptr);
+  if (ptr == NULL && size > 0)
     return (malloc(size));
   original = get_elem_by_ptr(ptr);
   if (original->size >= size)
@@ -43,6 +45,7 @@ void		*realloc(void *ptr, size_t size)
       if (iterator->size >= size && iterator->free == STATUS_FREE)
 	{
 	  iterator->free = STATUS_NFREE;
+	  split_block(iterator, size);
 	  return (copyBlock(iterator, original));
 	}
       iterator = iterator->next;

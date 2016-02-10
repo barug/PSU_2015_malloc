@@ -5,12 +5,30 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Fri Jan 29 15:27:29 2016 Erwan Dupard
-** Last update Mon Feb  8 14:17:19 2016 Erwan Dupard
+** Last update Wed Feb 10 15:08:31 2016 Barthelemy Gouby
 */
 
 #include "ressources.h"
 
 t_block			*g_data;
+
+/* void			show_alloc_mem() */
+/* { */
+/*   t_block		*iterator; */
+/*   int			i = 0; */
+
+/*   printf("break : %p\n", sbrk(0)); */
+/*   iterator = g_data; */
+/*   while (iterator) */
+/*     { */
+/*       printf("%p - %p : %lu bytes\n", */
+/* 	     iterator->data, */
+/* 	     (iterator->next ? iterator->next : sbrk(0)), */
+/* 	     iterator->size); */
+/*       iterator = iterator->next; */
+/*       i++; */
+/*     } */
+/* } */
 
 void			show_alloc_mem()
 {
@@ -21,9 +39,10 @@ void			show_alloc_mem()
   iterator = g_data;
   while (iterator)
     {
-      printf("%p - %p : %lu bytes\n",
+      printf("block at %p data from %p to %p : %lu bytes\n",
+	     iterator,
 	     iterator->data,
-	     (iterator->next ? iterator->next : sbrk(0)),
+	     iterator->data + iterator->size - 1,
 	     iterator->size);
       iterator = iterator->next;
       i++;

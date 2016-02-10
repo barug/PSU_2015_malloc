@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Thu Jan 28 10:25:45 2016 Erwan Dupard
-// Last update Tue Feb  9 14:08:15 2016 Erwan Dupard
+// Last update Wed Feb 10 16:33:05 2016 Barthelemy Gouby
 */
 
 #ifndef RESSOURCES_H_
@@ -21,7 +21,7 @@
 # define STATUS_FREE	(1)
 # define STATUS_NFREE	(0)
 
-# define align4(x) (((((x) - 1) >> 2) << 2) + 4)
+# define align8(x) (((((x) - 1) >> 3) << 3) + 8)
 
 /*
  * Definition of memory block (set in malloc , used for free)
@@ -85,6 +85,12 @@ t_block			*fusion_prev_block(t_block *currentElem);
 void			*get_heap_end();
 
 /*
+ * Split block of adequate size
+ */
+void			split_block(t_block *block, size_t size);
+
+
+/*
  * Dump Memory (HEX && ASCII)
  */
 void			my_memory_dump();
@@ -95,7 +101,9 @@ void			dump_node(t_block *);
  * Heap Linked list ((META-DATA) DATA ) ---> ((META-DATA) DATA ) ---> NIL
  */
 t_block			*g_data;
+t_block			*g_last;
 pthread_mutex_t		g_mutex;
 char			g_mutex_initialized;
+size_t			g_page_left;
 
 #endif /* ! RESSOURCES_H_ */
