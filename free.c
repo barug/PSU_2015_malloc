@@ -5,14 +5,14 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Fri Jan 29 14:24:02 2016 Erwan Dupard
-** Last update Tue Feb  9 19:07:46 2016 Barthelemy Gouby
+** Last update Wed Feb 10 17:54:01 2016 Barthelemy Gouby
 */
 
 #include "ressources.h"
 
 extern t_block		*g_data;
+extern t_block		*g_last;
 extern pthread_mutex_t	g_mutex;
-extern size_t		g_page_left;
 
 t_block			*fusion_prev_block(t_block *currentElem)
 {
@@ -25,6 +25,8 @@ t_block			*fusion_prev_block(t_block *currentElem)
       currentPrev->next = currentElem->next;
       if (currentElem->next)
 	currentElem->next->prev = currentPrev;
+      if (currentElem == g_last)
+	currentPrev = g_last;
     }
   return (currentPrev);
 }
@@ -48,7 +50,7 @@ void			free(void *ptr)
   if (valid_addr(ptr))
     {
       currentElem = get_elem_by_ptr(ptr);
-      currentElem->free = 1;
+      currentElem->free = STATUS_FREE;
       currentElem = fusion_prev_block(currentElem);
       if (currentElem && currentElem->next && currentElem->next->free)
 	currentElem = fusion_prev_block(currentElem->next);
