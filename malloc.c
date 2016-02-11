@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Tue Jan 26 23:51:05 2016 Erwan Dupard
-** Last update Wed Feb 10 17:39:55 2016 Barthelemy Gouby
+** Last update Thu Feb 11 11:18:55 2016 Barthelemy Gouby
 */
 
 #include <errno.h>
@@ -55,6 +55,8 @@ void			split_block(t_block *block, size_t size)
       new_block = (void*) block->data + size;
       new_block->size = block->size - (size + NODE_SIZE);
       new_block->next = block->next;
+      if (new_block->next)
+	new_block->next->prev = new_block;
       new_block->prev = block;
       block->next = new_block;
       new_block->free = STATUS_FREE;

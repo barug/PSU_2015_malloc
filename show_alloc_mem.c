@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Fri Jan 29 15:27:29 2016 Erwan Dupard
-** Last update Wed Feb 10 15:08:31 2016 Barthelemy Gouby
+** Last update Thu Feb 11 12:35:54 2016 Barthelemy Gouby
 */
 
 #include "ressources.h"
@@ -39,11 +39,12 @@ void			show_alloc_mem()
   iterator = g_data;
   while (iterator)
     {
-      printf("block at %p data from %p to %p : %lu bytes\n",
+      printf("block at %p data from %p to %p : %lu bytes free:%i\n",
 	     iterator,
 	     iterator->data,
 	     iterator->data + iterator->size - 1,
-	     iterator->size);
+	     iterator->size,
+	     iterator->free);
       iterator = iterator->next;
       i++;
     }
