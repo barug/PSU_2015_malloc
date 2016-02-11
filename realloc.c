@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Mon Feb  1 14:44:26 2016 Erwan Dupard
-** Last update Thu Feb 11 12:39:39 2016 Barthelemy Gouby
+** Last update Thu Feb 11 14:00:14 2016 Erwan Dupard
 */
 
 #include "ressources.h"
@@ -30,33 +30,19 @@ static void	*copyBlock(t_block *d, t_block *s)
 
 void		*realloc(void *ptr, size_t size)
 {
-  /* t_block	*iterator; */
   t_block	*original;
   t_block	*newBlock;
 
-  if (g_mutex_initialized == 0)
-    {
-      g_mutex_initialized = 1;
-      g_mutex = (pthread_mutex_t)PTHREAD_MUTEX_INITIALIZER;
-    }
-  pthread_mutex_lock(&g_mutex);
   if (ptr == NULL && size == 0)
     {
       free (ptr);
-      pthread_mutex_unlock(&g_mutex);
       return (NULL);
     }
   if (ptr == NULL && size > 0)
-    {
-      pthread_mutex_unlock(&g_mutex);
-      return (malloc(size));
-    }
+    return (malloc(size));
   original = get_elem_by_ptr(ptr);
   if (original->size >= size)
-    {
-        pthread_mutex_unlock(&g_mutex);
-	return (original->data);
-    }
+    return (original->data);
   /* iterator = g_data; */
   /* while (iterator) */
   /*   { */
@@ -71,11 +57,7 @@ void		*realloc(void *ptr, size_t size)
   /* if ((newBlock = my_extend_memory(size)) == NULL) */
   /*   return (NULL); */
   if ((newBlock = malloc(size)) == (void*) -1)
-    {
-      pthread_mutex_unlock(&g_mutex);
-      return (NULL);
-    }
+    return (NULL);
   newBlock = get_elem_by_ptr(newBlock);
-  pthread_mutex_unlock(&g_mutex);
   return (copyBlock(newBlock, original));
 }
