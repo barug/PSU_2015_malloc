@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Mon Feb  1 14:44:26 2016 Erwan Dupard
-** Last update Thu Feb 11 14:00:14 2016 Erwan Dupard
+** Last update Thu Feb 11 14:01:14 2016 Erwan Dupard
 */
 
 #include "ressources.h"
@@ -43,19 +43,6 @@ void		*realloc(void *ptr, size_t size)
   original = get_elem_by_ptr(ptr);
   if (original->size >= size)
     return (original->data);
-  /* iterator = g_data; */
-  /* while (iterator) */
-  /*   { */
-  /*     if (iterator->size >= size && iterator->free == STATUS_FREE) */
-  /* 	{ */
-  /* 	  iterator->free = STATUS_NFREE; */
-  /* 	  split_block(iterator, size); */
-  /* 	  return (copyBlock(iterator, original)); */
-  /* 	} */
-  /*     iterator = iterator->next; */
-  /*   } */
-  /* if ((newBlock = my_extend_memory(size)) == NULL) */
-  /*   return (NULL); */
   if ((newBlock = malloc(size)) == (void*) -1)
     return (NULL);
   newBlock = get_elem_by_ptr(newBlock);
