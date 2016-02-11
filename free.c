@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Fri Jan 29 14:24:02 2016 Erwan Dupard
-** Last update Thu Feb 11 11:19:11 2016 Barthelemy Gouby
+** Last update Thu Feb 11 14:49:33 2016 Erwan Dupard
 */
 
 #include "ressources.h"
@@ -54,19 +54,6 @@ void			free(void *ptr)
       currentElem = fusion_prev_block(currentElem);
       if (currentElem && currentElem->next && currentElem->next->free)
 	currentElem = fusion_prev_block(currentElem->next);
-      /* if (currentElem && !currentElem->next) */
-      /* 	{ */
-      /* 	  /\* printf("REDUCING AVAILABLE MEMORY OF:%lu\n", currentElem->size); *\/ */
-      /* 	  if (currentElem->prev) */
-      /* 	    { */
-      /* 	      g_last = currentElem->prev; */
-      /* 	      currentElem->prev->next = NULL; */
-      /* 	    } */
-      /* 	  else */
-      /* 	    g_data = NULL; */
-      /* 	  g_page_left += currentElem->size; */
-      /* 	  /\* brk(currentElem); *\/ */
-      /* 	} */
     }
   pthread_mutex_unlock(&g_mutex);
 }
