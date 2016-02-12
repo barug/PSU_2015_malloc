@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Tue Jan 26 23:51:05 2016 Erwan Dupard
-** Last update Fri Feb 12 13:51:01 2016 Barthelemy Gouby
+** Last update Fri Feb 12 15:32:59 2016 Barthelemy Gouby
 */
 
 #include <errno.h>
@@ -97,9 +97,9 @@ void			*malloc(size_t size)
       g_mutex = (pthread_mutex_t)PTHREAD_MUTEX_INITIALIZER;
     }
   size = align8(size);
-  if (size <= 0)
-    return (NULL);
   pthread_mutex_lock(&g_mutex);
+  if (size == 0)
+    size = 8;
   if ((allocated_block = find_free_block(size)) == NULL)
     allocated_block = my_extend_memory(size);
   pthread_mutex_unlock(&g_mutex);

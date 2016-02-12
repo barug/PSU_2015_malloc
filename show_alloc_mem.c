@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Fri Jan 29 15:27:29 2016 Erwan Dupard
-** Last update Thu Feb 11 17:49:55 2016 Barthelemy Gouby
+** Last update Fri Feb 12 14:19:13 2016 Barthelemy Gouby
 */
 
 #include "ressources.h"
@@ -50,4 +50,6 @@ void			show_alloc_mem()
     }
   printf("heap size: %li\n", (char*)sbrk(0) - (char*) g_data);
   printf("maybe: %li\n", (char*) g_last->data - (char*) g_data + g_last->size);
+  printf("heap end: %p\n", sbrk(0));
+  printf("expected heap end: %p\n", g_last->data + g_last->size);
 }
