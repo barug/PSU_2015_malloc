@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Mon Feb  1 14:44:26 2016 Erwan Dupard
-** Last update Thu Feb 11 17:43:26 2016 Barthelemy Gouby
+** Last update Fri Feb 12 15:01:06 2016 Erwan Dupard
 */
 
 #include "ressources.h"
@@ -19,7 +19,7 @@ static void	*copyBlock(t_block *d, t_block *s)
   size_t	i;
 
   i = 0;
-  while (i < s->size)
+  while (i < s->size && i < d->size)
     {
       d->data[i] = s->data[i];
       ++i;
@@ -43,7 +43,7 @@ void		*realloc(void *ptr, size_t size)
   original = get_elem_by_ptr(ptr);
   if (original->size >= size)
     return (original->data);
-  if ((newBlock = malloc(size)) == (void*) -1)
+  if ((newBlock = malloc(size)) == NULL)
     return (NULL);
   newBlock = get_elem_by_ptr(newBlock);
   return (copyBlock(newBlock, original));
