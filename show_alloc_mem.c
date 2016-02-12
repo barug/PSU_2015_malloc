@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Fri Jan 29 15:27:29 2016 Erwan Dupard
-** Last update Thu Feb 11 12:35:54 2016 Barthelemy Gouby
+** Last update Thu Feb 11 17:49:55 2016 Barthelemy Gouby
 */
 
 #include "ressources.h"
@@ -48,4 +48,6 @@ void			show_alloc_mem()
       iterator = iterator->next;
       i++;
     }
+  printf("heap size: %li\n", (char*)sbrk(0) - (char*) g_data);
+  printf("maybe: %li\n", (char*) g_last->data - (char*) g_data + g_last->size);
 }

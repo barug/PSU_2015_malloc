@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Fri Jan 29 14:24:02 2016 Erwan Dupard
-** Last update Thu Feb 11 11:19:11 2016 Barthelemy Gouby
+** Last update Thu Feb 11 15:08:02 2016 Barthelemy Gouby
 */
 
 #include "ressources.h"
@@ -45,7 +45,9 @@ int			valid_addr(void *p)
 void			free(void *ptr)
 {
   t_block		*currentElem;
-  
+  /* size_t		page_size; */
+  /* size_t		size_to_reduce; */
+
   pthread_mutex_lock(&g_mutex);
   if (valid_addr(ptr))
     {
@@ -56,16 +58,20 @@ void			free(void *ptr)
 	currentElem = fusion_prev_block(currentElem->next);
       /* if (currentElem && !currentElem->next) */
       /* 	{ */
-      /* 	  /\* printf("REDUCING AVAILABLE MEMORY OF:%lu\n", currentElem->size); *\/ */
-      /* 	  if (currentElem->prev) */
+      /* 	  page_size = getpagesize(); */
+      /* 	  if (currentElem->size > 2 * page_size) */
       /* 	    { */
-      /* 	      g_last = currentElem->prev; */
-      /* 	      currentElem->prev->next = NULL; */
+      /* 	      if (currentElem->prev) */
+      /* 		{ */
+      /* 		  g_last = currentElem->prev; */
+      /* 		  currentElem->prev->next = NULL; */
+      /* 		} */
+      /* 	      else */
+      /* 		g_data = NULL; */
+      /* 	      size_to_reduce = (currentElem->size / page_size - 1)  * page_size; */
+      /* 	      sbrk(size_to_reduce); */
+      /* 	      currentElem->size = currentElem->size - size_to_reduce; */
       /* 	    } */
-      /* 	  else */
-      /* 	    g_data = NULL; */
-      /* 	  g_page_left += currentElem->size; */
-      /* 	  /\* brk(currentElem); *\/ */
       /* 	} */
     }
   pthread_mutex_unlock(&g_mutex);
